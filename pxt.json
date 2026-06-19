@@ -4,13 +4,11 @@
     "description": "SmartTEAM4",
     "license": "MIT",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "microphone": "*"
     },
     "files": [
         "main.ts",
-        "config/tipos.ts",
-        "config/categorias.ts",
-        "config/bloques.ts",
         "blocks/categorias/entradas.ts",
         "blocks/categorias/salidas.ts",
         "blocks/categorias/motores.ts",
