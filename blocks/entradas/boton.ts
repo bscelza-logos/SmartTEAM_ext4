@@ -1,5 +1,5 @@
 /**
- * Sensor botón — ENTRADAS / subcategoría Sensores
+ * Botón en pin — categoría nativa Entrada (input) / grupo sensores
  * Origen: ICreateRobot main.ts → buttonState
  */
 
@@ -20,22 +20,15 @@ enum Ext4ButtonPin {
 
 namespace ext4_entradas {
 
-    // ─── boton ───────────────────────────────────────────────────────────────
-    // EDITAR: config/bloques.ts → BLOQUES.boton
-    // COLOR:     #0288D1
-    // ICONO:     icons/entradas/boton.png  (FA: \uf11c)
-    // CATEGORÍA: ENTRADAS
-    // SUBCATEGORÍA: Sensores
-    // ─────────────────────────────────────────────────────────────────────────
     /**
-     * Lee el estado del sensor botón en el pin indicado.
+     * Lee el estado del botón conectado al pin indicado.
      * @param pin pin de conexión, eg: P0
      */
-    //% blockId=ext4_button_sensor block="Button Sensor %pin" color="#0288D1" icon="\uf11c" group="Sensores" weight=100
+    //% blockId=ext4_button_sensor block="BOTÓN en el pin %pin" blockNamespace=input color=#D400D4 group="sensores" weight=0 blockGap=8
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.width=220
     //% pin.fieldOptions.columns=2
-    export function boton(pin: Ext4ButtonPin): number {
+    export function ext4BotonEnPin(pin: Ext4ButtonPin): number {
         return pins.digitalReadPin(buttonPinToDigital(pin));
     }
 }

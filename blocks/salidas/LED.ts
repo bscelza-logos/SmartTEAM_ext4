@@ -12,8 +12,8 @@ enum Ext4LedPin {
     P8 = 8,
     //% block="12"
     P12 = 12,
-    //% block="15"
-    P15 = 15,
+    //% block="16"
+    P15 = 16,
 }
 
 /**

@@ -5,24 +5,15 @@
  */
 
 const BLOQUES = {
-    inicializar: {
-        color: "#1565C0",
-        iconoFa: "\\uf135",
-        iconoArchivo: "icons/smartteam4/inicializar.png",
-        categoria: "SMARTTEAM4",
-        blockId: "ext4_smartteam4_init",
-        texto: "inicializar SmartTEAM4",
-        weight: 100,
-    },
     boton: {
-        color: "#0288D1",
+        color: "#D400D4",
         iconoFa: "\\uf11c",
         iconoArchivo: "icons/entradas/boton.png",
-        categoria: "ENTRADAS",
-        subcategoria: "Sensores",
+        categoria: "input",
+        subcategoria: "sensores",
         blockId: "ext4_button_sensor",
-        texto: "Button Sensor %pin",
-        weight: 100,
+        texto: "BOTÓN en el pin %pin",
+        weight: 0,
     },
     led: {
         color: "#FF0000",
