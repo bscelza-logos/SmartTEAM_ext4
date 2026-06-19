@@ -25,7 +25,7 @@ namespace ext4_smartteam4 {
 
     //% blockId=ext4_motor_run block="|%motoraddress|Motor rotate at|%speed|"
     //% speed.min=-100 speed.max=100
-    //% parts="SuperBit_runMotor" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="SuperBit_runMotor" group="Motores" color="#29B6F6" icon="\uf013"
     export function runMotor(motoraddress: Ext4MotorColor, speed: number): void {
         speed = speed / 2
         let speed_Buff
@@ -48,7 +48,7 @@ namespace ext4_smartteam4 {
     //% blockId=ext4_motor_turn_to block="|%motoraddress|Motor is turned at|%speed|to|%location|degrees"
     //% speed.min=0 speed.max=100
     //% location.min=-360 location.max=360
-    //% parts="writemotorlocation" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="writemotorlocation" group="Motores" color="#29B6F6" icon="\uf013"
     export function Writemotorlocation(motoraddress: Ext4MotorColor, speed: number, location: number): void {
         if (speed == 0) {
             return
@@ -106,7 +106,7 @@ namespace ext4_smartteam4 {
     //% blockId=ext4_motor_rotate_deg block="|%motoraddress|Motor rotate at|%speed|in|%location|degrees"
     //% speed.min=-100 speed.max=100
     //% location.min=0 
-    //% parts="writemotorrelativelocation" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="writemotorrelativelocation" group="Motores" color="#29B6F6" icon="\uf013"
     export function Writemotorrelativelocation(motoraddress: Ext4MotorColor, speed: number, location: number): void {
         if (((location <= 5) && (location >= 0)) || ((location >= -5) && (location <= 0))) {
             return;
@@ -158,7 +158,7 @@ namespace ext4_smartteam4 {
 
     //% blockId=ext4_motor_rotate_sec block="|%motoraddress|Motor rotate at|%speed|in|%time|seconds"
     //% speed.min=-100 speed.max=100
-    //% parts="writemotorrelativetime" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="writemotorrelativetime" group="Motores" color="#29B6F6" icon="\uf013"
     export function Writemotorrelativetime(motoraddress: Ext4MotorColor, speed: number, time: number): void {
         speed = speed / 2
         if (time > 0 && time < 0.1) {
@@ -209,7 +209,7 @@ namespace ext4_smartteam4 {
     //% blockId=ext4_motor_dual_run block="Dual motors rotate at|%speed1| |%speed2|"
     //% speed1.min=-100 speed1.max=100
     //% speed2.min=-100 speed2.max=100
-    //% parts="SuperBit_runDMotor" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="SuperBit_runDMotor" group="Motores" color="#29B6F6" icon="\uf013"
     export function runDMotor(speed1: number, speed2: number): void {
         speed1 = -speed1 / 2
         speed2 = speed2 / 2
@@ -254,7 +254,7 @@ namespace ext4_smartteam4 {
     //% speed1.min=-100 speed1.max=100
     //% speed2.min=-100 speed2.max=100
     //% location.min=0 
-    //% parts="writeDmotorlocation" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="writeDmotorlocation" group="Motores" color="#29B6F6" icon="\uf013"
     export function WriteDmotorlocation(speed1: number, speed2: number, location: number): void {
         if (((location <= 5) && (location >= 0)) || ((location >= -5) && (location <= 0))) {
             return;
@@ -343,7 +343,7 @@ namespace ext4_smartteam4 {
     //% speed1.min=-100 speed1.max=100
     //% speed2.min=-100 speed2.max=100
     //% time.min=0 
-    //% parts="writeDmotortime" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="writeDmotortime" group="Motores" color="#29B6F6" icon="\uf013"
     export function writeDmotortime(speed1: number, speed2: number, time: number): void {
         speed1 = -speed1 / 2
         speed2 = speed2 / 2
@@ -426,7 +426,7 @@ namespace ext4_smartteam4 {
 
 
     //% blockId=ext4_motor_read_speed block="Read speed of the |%motoraddress|motor"
-    //% parts="readmotorspeed" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="readmotorspeed" group="Motores" color="#29B6F6" icon="\uf013"
     export function Readmotorspeed(motoraddress: Ext4MotorColor): number {
         let GetBuff8 = pins.createBuffer(6)
         GetBuff8 = pins.i2cReadBuffer(motoraddress, 6)
@@ -457,7 +457,7 @@ namespace ext4_smartteam4 {
     }
 
     //% blockId=ext4_motor_read_pos block="Read position of the |%motoraddress|motor"
-    //% parts="readmotorlocation" group="Motores" color="#1565C0" icon="\uf013"
+    //% parts="readmotorlocation" group="Motores" color="#29B6F6" icon="\uf013"
     export function Readmotorlocation(motoraddress: Ext4MotorColor): number {
         let GetBuff22 = pins.createBuffer(6)
         GetBuff22 = pins.i2cReadBuffer(motoraddress, 6)

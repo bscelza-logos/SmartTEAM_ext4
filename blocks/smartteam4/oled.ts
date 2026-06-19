@@ -338,7 +338,7 @@ namespace ext4_smartteam4 {
     //% oled.fieldEditor="gridpicker"
     //% oled.fieldOptions.width=320
     //% oled.fieldOptions.columns=13
-    //% group="OLED" color="#1565C0" icon="\uf108"
+    //% group="OLED" color="#4527A0" icon="\uf108"
     //% weight=10 blockGap=10 
     export function showString(oled: Ext4Oled, s: string, color: number = 1) {
         let oled_x = oled % 13;
@@ -389,7 +389,7 @@ namespace ext4_smartteam4 {
     //% olednum.fieldEditor="gridpicker"
     //% olednum.fieldOptions.width=320
     //% olednum.fieldOptions.columns=13
-    //% group="OLED" color="#1565C0" icon="\uf108"
+    //% group="OLED" color="#4527A0" icon="\uf108"
     //% weight=9 blockGap=10
     export function showNumber(olednum: Ext4Oled, num: number, color: number = 1) {
         let olednum_x = 0
@@ -413,7 +413,7 @@ namespace ext4_smartteam4 {
      */
     //% blockId=ext4_oled_show_string_xy block="Display string at x %x|y %y|at %s|color %color"
     //% parts=OLED12864_I2C trackArgs=0
-    //% group="OLED" color="#1565C0" icon="\uf108"
+    //% group="OLED" color="#4527A0" icon="\uf108"
     //% weight=80 blockGap=10 
     export function showStringxy(x: number, y: number, s: string, color: number = 1) {
         let col = 0
@@ -451,7 +451,7 @@ namespace ext4_smartteam4 {
      */
     //% blockId=ext4_oled_show_number_xy block="Display number at x %x|y %y|number %num|color %color"
     //% parts=OLED12864_I2C trackArgs=0
-    //% group="OLED" color="#1565C0" icon="\uf108"
+    //% group="OLED" color="#4527A0" icon="\uf108"
     //% weight=80 blockGap=10
     export function showNumberxy(x: number, y: number, num: number, color: number = 1) {
         showStringxy(x, y, num.toString(), color)
@@ -463,7 +463,7 @@ namespace ext4_smartteam4 {
      */
     //% blockId=ext4_oled_clear block="clear"
     //% parts=OLED12864_I2C trackArgs=0
-    //% group="OLED" color="#1565C0" icon="\uf108"
+    //% group="OLED" color="#4527A0" icon="\uf108"
     //% weight=8 blockGap=10
     export function clear() {
         _screen.fill(0)
@@ -480,7 +480,7 @@ namespace ext4_smartteam4 {
     //% blockId=ext4_oled_init block="Initialize OLED "
     //% parts=OLED12864_I2C trackArgs=0
     //% weight=11 blockGap=10
-    //% group="OLED" color="#1565C0" icon="\uf108"
+    //% group="OLED" color="#4527A0" icon="\uf108"
     //% blockGap=10  
     export function init() {
         _I2CAddr = 60;

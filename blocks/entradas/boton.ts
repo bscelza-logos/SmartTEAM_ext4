@@ -5,17 +5,32 @@
 
 enum Ext4ButtonPin {
     //% block="P0"
-    P0 = 1,
+    P0 = 0,
     //% block="P16"
-    P16 = 2,
+    P16 = 16,
     //% block="P1"
-    P1 = 3,
+    P1 = 1,
     //% block="P12"
-    P12 = 4,
+    P12 = 12,
     //% block="P2"
-    P2 = 5,
+    P2 = 2,
     //% block="P8"
-    P8 = 6,
+    P8 = 8,
+}
+
+enum Ext4CompareOperator {
+    //% block="="
+    Eq,
+    //% block="≠"
+    Neq,
+    //% block="<"
+    Lt,
+    //% block="≤"
+    Lte,
+    //% block=">"
+    Gt,
+    //% block="≥"
+    Gte,
 }
 
 namespace ext4_entradas {
@@ -30,6 +45,34 @@ namespace ext4_entradas {
     //% pin.fieldOptions.columns=2
     export function ext4BotonEnPin(pin: Ext4ButtonPin): number {
         return pins.digitalReadPin(buttonPinToDigital(pin));
+    }
+
+    /**
+     * Compara la lectura del botón con un valor numérico.
+     * @param reading lectura del botón, eg: ext4BotonEnPin(Ext4ButtonPin.P0)
+     * @param op operador de comparación
+     * @param value valor a comparar, eg: 0
+     */
+    //% blockId=ext4_button_compare block="$reading $op $value" blockNamespace=input color=#00979D group="sensores" weight=2 blockGap=8
+    //% reading.shadow=ext4_button_sensor
+    //% value.shadow=math_number
+    //% value.defl=0
+    export function ext4BotonComparar(reading: number, op: Ext4CompareOperator, value: number): boolean {
+        return compareValues(reading, op, value);
+    }
+}
+
+function compareValues(left: number, op: Ext4CompareOperator, right: number): boolean {
+    switch (op) {
+        case Ext4CompareOperator.Eq: return left == right;
+        case Ext4CompareOperator.Neq: return left != right;
+        case Ext4CompareOperator.Lt: return left < right;
+        case Ext4CompareOperator.Lte: return left <= right;
+        case Ext4CompareOperator.Gt: return left > right;
+        case Ext4CompareOperator.Gte: return left >= right;
+        default:
+            const _exhaustiveCheck: never = op;
+            return _exhaustiveCheck;
     }
 }
 

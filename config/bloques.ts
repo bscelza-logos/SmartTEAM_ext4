@@ -15,6 +15,16 @@ const BLOQUES = {
         texto: "BOTÓN en el pin %pin",
         weight: 0,
     },
+    botonComparar: {
+        color: "#00979D",
+        iconoFa: "\\uf11c",
+        iconoArchivo: "icons/entradas/boton-compare.png",
+        categoria: "input",
+        subcategoria: "sensores",
+        blockId: "ext4_button_compare",
+        texto: "$reading $op $value",
+        weight: 2,
+    },
     ultrasonic: {
         color: "#D400D4",
         iconoFa: "\\uf1ce",
@@ -36,7 +46,7 @@ const BLOQUES = {
         weight: 100,
     },
     motorRun: {
-        color: "#1565C0",
+        color: "#29B6F6",
         iconoFa: "\\uf013",
         iconoArchivo: "icons/smartteam4/motor-run.png",
         categoria: "SMARTTEAM4",
@@ -46,7 +56,7 @@ const BLOQUES = {
         weight: 100,
     },
     oledInit: {
-        color: "#1565C0",
+        color: "#4527A0",
         iconoFa: "\\uf108",
         iconoArchivo: "icons/smartteam4/oled-init.png",
         categoria: "SMARTTEAM4",
