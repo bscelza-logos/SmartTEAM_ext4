@@ -20,7 +20,7 @@ namespace ext4_salidas {
      * Descripción del bloque.
      * @param param describe el parámetro, eg: 0
      */
-    //% blockId=ext4_ejemplo block="texto del bloque %param" color="#E63022" icon="\uf0eb" weight=50
+    //% blockId=ext4_ejemplo block="texto del bloque %param" color="#E63022" icon="\uf0eb" group="LED" weight=50
     export function nombreDelBloque(param: number): void {
         // código del bloque
     }

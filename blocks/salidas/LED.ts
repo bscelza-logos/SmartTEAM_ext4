@@ -36,13 +36,14 @@ namespace ext4_salidas {
     // COLOR:     #FF0000
     // ICONO:     icons/salidas/led.png  (FA: \uf0eb)
     // CATEGORÍA: SALIDAS
+    // SUBCATEGORÍA: LED
     // ─────────────────────────────────────────────────────────────────────────
     /**
      * Escribe el estado del LED en el pin indicado.
      * @param pin pin de conexión, eg: P2
      * @param estado ON (0) u OFF (1), eg: ON
      */
-    //% blockId=ext4_led block="LED Pin %pin Estado %estado" color="#FF0000" icon="\uf0eb" weight=100
+    //% blockId=ext4_led block="LED Pin %pin Estado %estado" color="#FF0000" icon="\uf0eb" group="LED" weight=100
     export function led(pin: Ext4LedPin, estado: Ext4LedEstado): void {
         pins.digitalWritePin(ledPinToDigital(pin), estado);
     }

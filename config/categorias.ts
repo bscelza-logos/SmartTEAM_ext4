@@ -3,12 +3,10 @@
  * CATEGORÍAS EDITABLES — SmartTEAM4
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * Edita COLOR, iconoFa, iconoArchivo y weight aquí.
+ * Edita COLOR, iconoFa, iconoArchivo, weight y subcategorias aquí.
  * Después sincroniza la línea //% del archivo en blocks/categorias/<nombre>.ts
  *
- * iconoArchivo: sube tu PNG/SVG en la carpeta icons/<categoria>/
- * iconoFa: código Font Awesome usado por MakeCode en //% icon="..."
- *           Busca iconos en: https://fontawesome.com/v5/search?m=free
+ * subcategorias → atributo groups=['…'] en la categoría (MakeCode)
  */
 
 const CATEGORIAS: Record<CategoriaId, CategoriaConfig> = {
@@ -19,6 +17,7 @@ const CATEGORIAS: Record<CategoriaId, CategoriaConfig> = {
         iconoFa: "\\uf135",
         iconoArchivo: "icons/smartteam4/categoria.png",
         weight: 90,
+        subcategorias: ["Movimiento", "Motores", "others"],
     },
     ENTRADAS: {
         namespace: "ext4_entradas",
@@ -35,21 +34,6 @@ const CATEGORIAS: Record<CategoriaId, CategoriaConfig> = {
         iconoFa: "\\uf0eb",
         iconoArchivo: "icons/salidas/categoria.png",
         weight: 70,
-    },
-    MOTORES: {
-        namespace: "ext4_motores",
-        nombre: "MOTORES",
-        color: "#7B1FA2",
-        iconoFa: "\\uf013",
-        iconoArchivo: "icons/motores/categoria.png",
-        weight: 60,
-    },
-    PANTALLAS: {
-        namespace: "ext4_pantallas",
-        nombre: "PANTALLAS",
-        color: "#00695C",
-        iconoFa: "\\uf108",
-        iconoArchivo: "icons/pantallas/categoria.png",
-        weight: 50,
+        subcategorias: ["LED", "Pantalla OLED"],
     },
 };

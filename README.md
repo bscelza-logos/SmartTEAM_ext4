@@ -40,15 +40,62 @@ Según la [especificación WebUSB](https://wicg.github.io/webusb/):
 
 Esta extensión no implementa WebUSB; lo hace MakeCode al pulsar **Descargar** o **Emparejar**.
 
-## Bloques incluidos al iniciar
+## Glosario de nombres (MakeCode)
 
+Para pedir cambios con precisión, usamos esta jerarquía. Ejemplo con una extensión como la de tu captura:
+
+```
+Extensión          →  SmartTEAM4
+  Categoría        →    SALIDAS
+    Subcategoría   →      LED
+      Bloque       →        LED Pin … Estado …
+```
+
+### Las 4 piezas principales
+
+| Nivel | Nombre que usamos | Dónde se ve | En SmartTEAM4 |
+|-------|-------------------|-------------|---------------|
+| 1 | **Extensión** | Al importar desde GitHub | **SmartTEAM4** |
+| 2 | **Categoría** | Fila en la caja de herramientas (izquierda) | **SmartTEAM4**, **SALIDAS** |
+| 3 | **Subcategoría** | Encabezado dentro del panel al abrir una categoría | **Movimiento**, **Motores**, **LED**, **Pantalla OLED** |
+| 4 | **Bloque** | Pieza que arrastrás al workspace | `LED Pin … Estado …` |
+
+En MakeCode, las subcategorías se llaman **groups** (`//% groups=[…]` en la categoría, `//% group="…"` en cada bloque).
+
+### Partes internas de un bloque
+
+Cuando hablemos de un bloque concreto, también podemos nombrar:
+
+| Parte | Nombre | Ejemplo |
+|-------|--------|---------|
+| Texto visible en el bloque | **Texto del bloque** | `Initialize OLED` / `LED Pin %pin Estado %estado` |
+| Identificador interno | **Block ID** | `ext4_led`, `ext4_smartteam4_init` |
+| Nombre en el código TypeScript | **Función** | `inicializar()`, `led()` |
+| Desplegables o casillas | **Parámetros** | `%pin`, `%estado`, `%text` |
+| Lista de opciones fijas | **Menú / enum** | `ON` / `OFF`, `P0` / `P1`… |
+
+### Cómo pedirme algo (plantillas)
+
+- *“Agregá un **bloque** `mostrar mensaje` en la **subcategoría** Pantalla OLED de **SALIDAS**”*
+- *“Renombrá la **categoría** SmartTEAM4 a …”*
+- *“Cambiá el **texto del bloque** LED a …”*
+- *“La **extensión** debe llamarse SmartTEAM4 en MakeCode”*
+
+### Dónde se configura cada cosa en este repo
+
+| Pieza | Archivo principal | Atributo clave |
+|-------|-------------------|----------------|
+| Extensión | `pxt.json` | `name`, `description` |
+| Categoría | `blocks/categorias/<nombre>.ts` | `//% block="…"` y `groups=[…]` |
+| Subcategoría | `config/categorias.ts` | `subcategorias` → `groups` / `group` |
+| Bloque | `blocks/<categoria>/<bloque>.ts` | `//% blockId=… block="…" group="…"` |
+| Traducción al español | `_locales/es/ext4-strings.json` | claves `{id:category}…` y `…\|block` |
+
+---
 Al crear o abrir un proyecto con esta extensión, estarán disponibles:
 
-- **SmartTEAM4**: bloques generales de la extensión (p. ej. `inicializar SmartTEAM4`)
-- **SALIDAS**: bloques de salida (p. ej. `LED Pin … Estado …`)
-- **Básicos**: categoría estándar de MakeCode (incluida vía `core`)
-- **al iniciar** (`on start`): se ejecuta una vez al iniciar el programa
-- **para siempre** (`forever`): repite el código en segundo plano
+- **SmartTEAM4** → subcategorías *Movimiento*, *Motores* (+ bloque `inicializar SmartTEAM4`)
+- **SALIDAS** → subcategorías *LED* (bloque LED), *Pantalla OLED* (vacía por ahora)
 
 ---
 
@@ -72,15 +119,13 @@ Cada bloque debe tener **COLOR**, **ICONO** y **CATEGORÍA** editables en dos lu
 
 Usa solo estas categorías por ahora:
 
-| Categoría | Archivo de categoría | Carpeta de bloques | Config |
-|-----------|---------------------|-------------------|--------|
-| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | `blocks/smartteam4/` | `config/categorias.ts → SMARTTEAM4` |
-| ENTRADAS | `blocks/categorias/entradas.ts` | `blocks/entradas/` | `config/categorias.ts → ENTRADAS` |
-| SALIDAS | `blocks/categorias/salidas.ts` | `blocks/salidas/` | `config/categorias.ts → SALIDAS` |
-| MOTORES | `blocks/categorias/motores.ts` | `blocks/motores/` | `config/categorias.ts → MOTORES` |
-| PANTALLAS | `blocks/categorias/pantallas.ts` | `blocks/pantallas/` | `config/categorias.ts → PANTALLAS` |
+| Categoría | Archivo de categoría | Subcategorías | Carpeta de bloques |
+|-----------|---------------------|---------------|-------------------|
+| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | Movimiento, Motores | `blocks/smartteam4/` |
+| SALIDAS | `blocks/categorias/salidas.ts` | LED, Pantalla OLED | `blocks/salidas/` |
+| ENTRADAS | `blocks/categorias/entradas.ts` | *(pendiente)* | `blocks/entradas/` |
 
-Para cambiar el color, icono o nombre de una **categoría completa**, edita `config/categorias.ts` y sincroniza la línea `//%` en `blocks/categorias/<nombre>.ts`.
+Para cambiar subcategorías, edita `config/categorias.ts` → `subcategorias` y sincroniza `groups=[…]` en `blocks/categorias/<nombre>.ts`.
 
 ### 3. Iconos personalizados
 

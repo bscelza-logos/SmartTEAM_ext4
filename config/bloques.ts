@@ -4,7 +4,7 @@
  * ═══════════════════════════════════════════════════════════════════════════
  *
  * Cada bloque tiene constantes editables: color, iconoFa, iconoArchivo,
- * categoria, blockId, texto y weight.
+ * categoria, subcategoria (group), blockId, texto y weight.
  *
  * Después de editar aquí, sincroniza la línea //% del archivo .ts del bloque
  * en blocks/<categoria>/ (ver blocks/_plantilla.ts).
@@ -25,6 +25,7 @@ const BLOQUES = {
         iconoFa: "\\uf0eb",
         iconoArchivo: "icons/salidas/led.png",
         categoria: "SALIDAS",
+        subcategoria: "LED",
         blockId: "ext4_led",
         texto: "LED Pin %pin Estado %estado",
         weight: 100,
