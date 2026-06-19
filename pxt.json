@@ -1,0 +1,32 @@
+{
+    "name": "ext4",
+    "version": "0.0.1",
+    "description": "SmartTEAM4",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "main.ts",
+        "config/tipos.ts",
+        "config/categorias.ts",
+        "config/bloques.ts",
+        "blocks/categorias/entradas.ts",
+        "blocks/categorias/salidas.ts",
+        "blocks/categorias/motores.ts",
+        "blocks/categorias/pantallas.ts",
+        "blocks/salidas/LED.ts",
+        "main.blocks",
+        "README.md",
+        "_locales/es/ext4-strings.json",
+        "_locales/es/ext4-jsdoc-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}

@@ -1,0 +1,5 @@
+{
+    "ext4_salidas.led": "Escribe el estado del LED en el pin indicado.",
+    "Ext4LedPin": "Pin de conexión del LED.",
+    "Ext4LedEstado": "Estado del LED: ON (0) u OFF (1)."
+}

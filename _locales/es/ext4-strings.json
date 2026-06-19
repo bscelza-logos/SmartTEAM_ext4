@@ -1,0 +1,9 @@
+{
+    "{id:category}ext4_entradas": "ENTRADAS",
+    "{id:category}ext4_salidas": "SALIDAS",
+    "{id:category}ext4_motores": "MOTORES",
+    "{id:category}ext4_pantallas": "PANTALLAS",
+    "ext4_salidas.led|block": "LED Pin %pin Estado %estado",
+    "Ext4LedPin|block": "Pin LED",
+    "Ext4LedEstado|block": "Estado LED"
+}
