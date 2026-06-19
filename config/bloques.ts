@@ -11,6 +11,15 @@
  */
 
 const BLOQUES = {
+    inicializar: {
+        color: "#1565C0",
+        iconoFa: "\\uf135",
+        iconoArchivo: "icons/smartteam4/inicializar.png",
+        categoria: "SMARTTEAM4",
+        blockId: "ext4_smartteam4_init",
+        texto: "inicializar SmartTEAM4",
+        weight: 100,
+    },
     led: {
         color: "#FF0000",
         iconoFa: "\\uf0eb",

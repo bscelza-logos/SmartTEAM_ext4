@@ -7,14 +7,45 @@ Extensión MakeCode para SmartTEAM4 (micro:bit).
 1. Abre [makecode.microbit.org](https://makecode.microbit.org/)
 2. Crea un **Nuevo proyecto**
 3. Ve a **Extensiones** (icono de engranaje)
-4. Pega la URL del repositorio de GitHub, por ejemplo:
-   `https://github.com/TU_USUARIO/SmarTEAM_EXT4`
+4. Pega la URL del repositorio de GitHub:
+   `https://github.com/bscelza-logos/SmartTEAM_ext4`
 5. Confirma la importación
+
+## Simulador y conexión USB
+
+**El simulador y WebUSB son cosas distintas.**
+
+| Función | Qué usa | Cuándo |
+|---------|---------|--------|
+| Simulador (micro:bit virtual) | JavaScript en el navegador | Siempre, sin cable |
+| micro:bit físico | WebUSB (MakeCode lo gestiona) | Al descargar o emparejar |
+
+### Si el simulador no carga (spinner infinito)
+
+1. Recarga la página o colapsa y vuelve a abrir el panel del simulador (flecha junto a la barra).
+2. Pulsa **Reiniciar** en los controles del simulador.
+3. Alterna entre **Bloques** y **JavaScript** para forzar una recarga.
+4. Revisa la consola del navegador (F12 → Consola) por errores de compilación.
+5. Si estás en red escolar/empresa, pide desbloquear los dominios del simulador MakeCode.
+
+### WebUSB (micro:bit físico) — requisitos
+
+Según la [especificación WebUSB](https://wicg.github.io/webusb/):
+
+- **Contexto seguro**: usar `https://makecode.microbit.org` (HTTPS).
+- **Navegador compatible**: Chrome, Edge u Opera (Chrome 61+). Firefox y Safari no soportan WebUSB.
+- **Gestión del usuario**: emparejar requiere un clic (MakeCode llama a `requestDevice()`).
+- **Cable USB de datos** (no solo carga).
+- **Firmware DAPLink** actualizado en la micro:bit.
+
+Esta extensión no implementa WebUSB; lo hace MakeCode al pulsar **Descargar** o **Emparejar**.
 
 ## Bloques incluidos al iniciar
 
 Al crear o abrir un proyecto con esta extensión, estarán disponibles:
 
+- **SmartTEAM4**: bloques generales de la extensión (p. ej. `inicializar SmartTEAM4`)
+- **SALIDAS**: bloques de salida (p. ej. `LED Pin … Estado …`)
 - **Básicos**: categoría estándar de MakeCode (incluida vía `core`)
 - **al iniciar** (`on start`): se ejecuta una vez al iniciar el programa
 - **para siempre** (`forever`): repite el código en segundo plano
@@ -43,6 +74,7 @@ Usa solo estas categorías por ahora:
 
 | Categoría | Archivo de categoría | Carpeta de bloques | Config |
 |-----------|---------------------|-------------------|--------|
+| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | `blocks/smartteam4/` | `config/categorias.ts → SMARTTEAM4` |
 | ENTRADAS | `blocks/categorias/entradas.ts` | `blocks/entradas/` | `config/categorias.ts → ENTRADAS` |
 | SALIDAS | `blocks/categorias/salidas.ts` | `blocks/salidas/` | `config/categorias.ts → SALIDAS` |
 | MOTORES | `blocks/categorias/motores.ts` | `blocks/motores/` | `config/categorias.ts → MOTORES` |

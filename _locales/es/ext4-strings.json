@@ -1,4 +1,6 @@
 {
+    "{id:category}ext4_smartteam4": "SmartTEAM4",
+    "ext4_smartteam4.inicializar|block": "inicializar SmartTEAM4",
     "{id:category}ext4_entradas": "ENTRADAS",
     "{id:category}ext4_salidas": "SALIDAS",
     "{id:category}ext4_motores": "MOTORES",
