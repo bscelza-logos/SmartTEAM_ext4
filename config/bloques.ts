@@ -15,6 +15,16 @@ const BLOQUES = {
         texto: "BOTÓN en el pin %pin",
         weight: 0,
     },
+    ultrasonic: {
+        color: "#D400D4",
+        iconoFa: "\\uf1ce",
+        iconoArchivo: "icons/entradas/ultrasonic.png",
+        categoria: "input",
+        subcategoria: "sensores",
+        blockId: "ext4_ultrasonic_sensor",
+        texto: "Ultrasonic Sensor %pin units %unit",
+        weight: 1,
+    },
     led: {
         color: "#FF0000",
         iconoFa: "\\uf0eb",

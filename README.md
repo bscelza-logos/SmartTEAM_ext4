@@ -9,7 +9,7 @@ Extensión MakeCode para SmartTEAM4 (micro:bit).
 3. Ve a **Extensiones** (icono de engranaje)
 4. Pega la URL del repositorio de GitHub:
    `https://github.com/bscelza-logos/SmartTEAM_ext4`
-5. Confirma la importación (versión actual: **0.0.7**)
+5. Confirma la importación (versión actual: **0.0.8**)
 
 ### Actualizar la extensión en un proyecto existente
 
@@ -17,7 +17,7 @@ MakeCode puede cachear extensiones importadas desde GitHub. Si no ves los bloque
 
 1. Eliminá la extensión **ext4** en **Extensiones**.
 2. Volvé a importar la URL de GitHub.
-3. Confirmá que la versión sea **0.0.7**.
+3. Confirmá que la versión sea **0.0.8**.
 
 ## Simulador y conexión USB
 
@@ -103,7 +103,7 @@ Cuando hablemos de un bloque concreto, también podemos nombrar:
 Al crear o abrir un proyecto con esta extensión, estarán disponibles:
 
 - **SmartTEAM4** → subcategorías *Movimiento* (vacía), *Motores* (servos Geek I2C), *OLED* (pantalla I2C)
-- **Entrada** (categoría nativa de MakeCode) → grupo *sensores* → bloque `BOTÓN en el pin %pin`
+- **Entrada** (categoría nativa de MakeCode) → grupo *sensores* → bloques `BOTÓN en el pin %pin`, `Ultrasonic Sensor %pin units %unit`
 - **SALIDAS** → subcategoría *LED* → bloque `LED Pin %pin Estado %estado`
 
 ---

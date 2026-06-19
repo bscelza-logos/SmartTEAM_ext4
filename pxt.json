@@ -1,6 +1,6 @@
 {
     "name": "ext4",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "SmartTEAM4",
     "license": "MIT",
     "dependencies": {
@@ -15,6 +15,7 @@
         "blocks/smartteam4/motores.ts",
         "blocks/smartteam4/oled.ts",
         "blocks/entradas/boton.ts",
+        "blocks/entradas/ultrasonic.ts",
         "blocks/salidas/LED.ts",
         "main.blocks",
         "README.md",
