@@ -12,7 +12,7 @@ const BLOQUES = {
         categoria: "SMARTTEAM4",
         subcategoria: "Sensores",
         blockId: "ext4_button_sensor",
-        texto: "BOTÓN en el pin %pin",
+        texto: "BOTÓN en el puerto %puerto",
         weight: 0,
     },
     botonComparar: {
@@ -32,7 +32,7 @@ const BLOQUES = {
         categoria: "SMARTTEAM4",
         subcategoria: "Sensores",
         blockId: "ext4_ultrasonic_sensor",
-        texto: "Ultrasonic Sensor %pin units %unit",
+        texto: "Ultrasonic Sensor %puerto units %unit",
         weight: 1,
     },
     led: {
@@ -42,7 +42,7 @@ const BLOQUES = {
         categoria: "SMARTTEAM4",
         subcategoria: "Salidas",
         blockId: "ext4_led",
-        texto: "LED Pin %pin Estado %estado",
+        texto: "LED Puerto %puerto Estado %estado",
         weight: 100,
     },
     motorRun: {

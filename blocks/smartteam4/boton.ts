@@ -1,22 +1,7 @@
 /**
- * Botón en pin — SmartTEAM4 / subcategoría Sensores
+ * Botón en puerto GPIO — SmartTEAM4 / subcategoría Sensores
  * Origen: ICreateRobot main.ts → buttonState
  */
-
-enum Ext4ButtonPin {
-    //% block="P0"
-    P0 = 0,
-    //% block="P16"
-    P16 = 16,
-    //% block="P1"
-    P1 = 1,
-    //% block="P12"
-    P12 = 12,
-    //% block="P2"
-    P2 = 2,
-    //% block="P8"
-    P8 = 8,
-}
 
 enum Ext4CompareOperator {
     //% block="="
@@ -36,20 +21,17 @@ enum Ext4CompareOperator {
 namespace ext4_smartteam4 {
 
     /**
-     * Lee el estado del botón conectado al pin indicado.
-     * @param pin pin de conexión, eg: P0
+     * Lee el estado del botón conectado al puerto GPIO indicado.
+     * @param puerto puerto GPIO, eg: P1
      */
-    //% blockId=ext4_button_sensor block="BOTÓN en el pin %pin" color=#D400D4 group="Sensores" weight=0 blockGap=8
-    //% pin.fieldEditor="gridpicker"
-    //% pin.fieldOptions.width=220
-    //% pin.fieldOptions.columns=2
-    export function ext4BotonEnPin(pin: Ext4ButtonPin): number {
-        return pins.digitalReadPin(buttonPinToDigital(pin));
+    //% blockId=ext4_button_sensor block="BOTÓN en el puerto %puerto" color=#D400D4 group="Sensores" weight=0 blockGap=8
+    export function ext4BotonEnPin(puerto: Ext4Puerto): number {
+        return pins.digitalReadPin(puertoToGpioPin(puerto));
     }
 
     /**
      * Compara la lectura del botón con un valor numérico.
-     * @param reading lectura del botón, eg: ext4BotonEnPin(Ext4ButtonPin.P0)
+     * @param reading lectura del botón, eg: ext4BotonEnPin(Ext4Puerto.P1)
      * @param op operador de comparación
      * @param value valor a comparar, eg: 0
      */
@@ -72,20 +54,6 @@ function compareValues(left: number, op: Ext4CompareOperator, right: number): bo
         case Ext4CompareOperator.Gte: return left >= right;
         default:
             const _exhaustiveCheck: never = op;
-            return _exhaustiveCheck;
-    }
-}
-
-function buttonPinToDigital(pin: Ext4ButtonPin): DigitalPin {
-    switch (pin) {
-        case Ext4ButtonPin.P0: return DigitalPin.P0;
-        case Ext4ButtonPin.P16: return <DigitalPin>16;
-        case Ext4ButtonPin.P1: return DigitalPin.P1;
-        case Ext4ButtonPin.P12: return DigitalPin.P12;
-        case Ext4ButtonPin.P2: return DigitalPin.P2;
-        case Ext4ButtonPin.P8: return DigitalPin.P8;
-        default:
-            const _exhaustiveCheck: never = pin;
             return _exhaustiveCheck;
     }
 }

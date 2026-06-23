@@ -2,21 +2,6 @@
  * Bloque LED — SmartTEAM4 / subcategoría Salidas
  */
 
-enum Ext4LedPin {
-    //% block="0"
-    P0 = 0,
-    //% block="1"
-    P1 = 1,
-    //% block="2"
-    P2 = 2,
-    //% block="8"
-    P8 = 8,
-    //% block="12"
-    P12 = 12,
-    //% block="16"
-    P15 = 16,
-}
-
 enum Ext4LedEstado {
     //% block="ON"
     ON = 0,
@@ -27,26 +12,12 @@ enum Ext4LedEstado {
 namespace ext4_smartteam4 {
 
     /**
-     * Escribe el estado del LED en el pin indicado.
-     * @param pin pin de conexión, eg: P2
+     * Escribe el estado del LED en el puerto GPIO indicado.
+     * @param puerto puerto GPIO, eg: P1
      * @param estado ON (0) u OFF (1), eg: ON
      */
-    //% blockId=ext4_led block="LED Pin %pin Estado %estado" color="#FF0000" icon="\uf0eb" group="Salidas" weight=100
-    export function led(pin: Ext4LedPin, estado: Ext4LedEstado): void {
-        pins.digitalWritePin(ledPinToDigital(pin), estado);
-    }
-}
-
-function ledPinToDigital(pin: Ext4LedPin): DigitalPin {
-    switch (pin) {
-        case Ext4LedPin.P0: return DigitalPin.P0;
-        case Ext4LedPin.P1: return DigitalPin.P1;
-        case Ext4LedPin.P2: return DigitalPin.P2;
-        case Ext4LedPin.P8: return DigitalPin.P8;
-        case Ext4LedPin.P12: return DigitalPin.P12;
-        case Ext4LedPin.P15: return <DigitalPin>15;
-        default:
-            const _exhaustiveCheck: never = pin;
-            return _exhaustiveCheck;
+    //% blockId=ext4_led block="LED Puerto %puerto Estado %estado" color="#FF0000" icon="\uf0eb" group="Salidas" weight=100
+    export function led(puerto: Ext4Puerto, estado: Ext4LedEstado): void {
+        pins.digitalWritePin(puertoToGpioPin(puerto), estado);
     }
 }
