@@ -21,10 +21,9 @@ enum Ext4CompareOperator {
 namespace ext4_smartteam4 {
 
     /**
-     * Lee el estado del botón conectado al puerto GPIO indicado.
-     * @param puerto puerto GPIO, eg: P1
+     * Lectura interna del botón (no visible en la caja de herramientas).
      */
-    //% blockId=ext4_button_sensor block="BOTÓN en el puerto %puerto" color=#D400D4 group="Sensores" weight=0 blockGap=8
+    //% blockId=ext4_button_sensor block="BOTÓN en el puerto %puerto" blockHidden=1
     export function ext4BotonEnPin(puerto: Ext4Puerto): number {
         return pins.digitalReadPin(puertoToGpioPin(puerto));
     }
@@ -35,7 +34,7 @@ namespace ext4_smartteam4 {
      * @param op operador de comparación
      * @param value valor a comparar, eg: 0
      */
-    //% blockId=ext4_button_compare block="$reading $op $value" color=#00979D group="Sensores" weight=2 blockGap=8
+    //% blockId=ext4_button_compare block="$reading $op $value" color=#00979D group="Sensores" weight=0 blockGap=8
     //% reading.shadow=ext4_button_sensor
     //% value.shadow=math_number
     //% value.defl=0
