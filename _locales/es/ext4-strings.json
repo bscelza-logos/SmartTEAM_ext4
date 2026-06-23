@@ -1,5 +1,9 @@
 {
     "{id:category}ext4_smartteam4": "SmartTEAM4",
+    "ext4_smartteam4.establecerCantidad|block": "Establecer Cantidad a %valor",
+    "ext4_smartteam4.leerCantidad|block": "Cantidad",
+    "ext4_smartteam4.sumarCantidad|block": "Sumar 1",
+    "ext4_smartteam4.restarCantidad|block": "Restar 1",
     "ext4_smartteam4.ext4MotoresMover|block": "Motores %movimiento 🟢 🔴 || Velocidad %velocidad",
     "Ext4MovimientoMotores|block": "Movimiento",
     "Ext4MovimientoMotores.Avanzar|block": "Avanzar",

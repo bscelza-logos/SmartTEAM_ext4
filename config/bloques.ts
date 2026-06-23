@@ -5,6 +5,46 @@
  */
 
 const BLOQUES = {
+    cantidadSet: {
+        color: "#D400D4",
+        iconoFa: "\\uf085",
+        iconoArchivo: "icons/smartteam4/cantidad-set.png",
+        categoria: "SMARTTEAM4",
+        subcategoria: "Variables",
+        blockId: "ext4_cantidad_set",
+        texto: "Establecer Cantidad a %valor",
+        weight: 100,
+    },
+    cantidadGet: {
+        color: "#D400D4",
+        iconoFa: "\\uf085",
+        iconoArchivo: "icons/smartteam4/cantidad-get.png",
+        categoria: "SMARTTEAM4",
+        subcategoria: "Variables",
+        blockId: "ext4_cantidad_get",
+        texto: "Cantidad",
+        weight: 99,
+    },
+    cantidadSumar: {
+        color: "#D400D4",
+        iconoFa: "\\uf085",
+        iconoArchivo: "icons/smartteam4/cantidad-sumar.png",
+        categoria: "SMARTTEAM4",
+        subcategoria: "Variables",
+        blockId: "ext4_cantidad_sumar",
+        texto: "Sumar 1",
+        weight: 98,
+    },
+    cantidadRestar: {
+        color: "#D400D4",
+        iconoFa: "\\uf085",
+        iconoArchivo: "icons/smartteam4/cantidad-restar.png",
+        categoria: "SMARTTEAM4",
+        subcategoria: "Variables",
+        blockId: "ext4_cantidad_restar",
+        texto: "Restar 1",
+        weight: 97,
+    },
     boton: {
         color: "#D400D4",
         iconoFa: "\\uf11c",
