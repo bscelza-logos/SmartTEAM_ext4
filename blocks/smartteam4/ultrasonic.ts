@@ -13,13 +13,22 @@ enum Ext4ObjetoDetectado {
 namespace ext4_smartteam4 {
 
     /**
-     * Comprueba si hay un objeto en el rango 5–50 cm.
+     * Mide la distancia en centímetros con el ultrasónico del puerto indicado.
      * @param puerto puerto GPIO, eg: P1
+     */
+    //% blockId=ext4_ultrasonic_sensor block="Ultrasonido en el pin %puerto" color=#D400D4 group="Sensores" weight=1 blockGap=8
+    export function ext4UltrasonicCm(puerto: Ext4Puerto): number {
+        return medirUltrasonicoCm(puerto);
+    }
+
+    /**
+     * Comprueba si la distancia medida indica un objeto en el rango 5–50 cm.
+     * @param distancia distancia en cm, eg: ext4UltrasonicCm(Ext4Puerto.P1)
      * @param estado Verdadero = detectado en rango; Falso = fuera de rango
      */
-    //% blockId=ext4_ultrasonic_detect block="Ultrasonido en el pin %puerto detecta objeto %estado" color=#C0CA33 group="Sensores" weight=1 blockGap=8
-    export function ext4UltrasonicDetecta(puerto: Ext4Puerto, estado: Ext4ObjetoDetectado): boolean {
-        const distancia = medirUltrasonicoCm(puerto);
+    //% blockId=ext4_ultrasonic_detect block="$distancia detecta objeto %estado" color=#00979D group="Sensores" weight=0 blockGap=8
+    //% distancia.shadow=ext4_ultrasonic_sensor
+    export function ext4UltrasonicDetecta(distancia: number, estado: Ext4ObjetoDetectado): boolean {
         const detectado = distancia > 5 && distancia < 50;
         switch (estado) {
             case Ext4ObjetoDetectado.Verdadero:
