@@ -168,7 +168,7 @@ namespace ext4_smartteam4 {
     let _buf3 = pins.createBuffer(3);
     let _buf4 = pins.createBuffer(4);
     let _ZOOM = 1;
-    let _oledInitialized = false;
+    
     let font: number[] = [];
     font[0] = 0x0022d422;
     font[1] = 0x0022d422;
@@ -327,18 +327,162 @@ namespace ext4_smartteam4 {
         cmd1(0x10 | (c >> 4)) // upper start column address    
     }
 
-    function draw() {
+    /**
+     * show text in OLED
+     * @param oled_x is X alis, eg: 0
+     * @param oled_y is Y alis, eg: 0
+     * @param s is the text will be show, eg: 'Hello!'
+     */
+    //% blockId=ext4_oled_show_text block="Display text – please choose location %oled| text%s"
+    //% parts=OLED12864_I2C trackArgs=0
+    //% oled.fieldEditor="gridpicker"
+    //% oled.fieldOptions.width=320
+    //% oled.fieldOptions.columns=13
+    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% weight=10 blockGap=10 
+    export function showString(oled: Ext4Oled, s: string, color: number = 1) {
+        let oled_x = oled % 13;
+        let oled_y = Math.floor(oled / 13);
+        let crror = 0
+        let col2 = 0
+        let q = 0
+        let ind2 = 0
+        let firstoledinit = 0
+        if (pins.i2cReadNumber(_I2CAddr, NumberFormat.Int8LE) == 67) {
+            init();
+        }else {
+            for (let r = 0; r < s.length; r++) {
+                q = font[s.charCodeAt(r)]
+                for (let o = 0; o < 5; o++) {
+                    col2 = 0
+                    for (let p = 0; p < 5; p++) {
+                        if (q & (1 << (5 * o + p)))
+                            col2 |= (1 << (p + 1))
+                    }
+                    ind2 = (oled_x + r) * 5 * (_ZOOM + 1) + oled_y * 128 + o * (_ZOOM + 1) + 1
+                    if (color == 0)
+                        col2 = 255 - col2
+                    _screen[ind2] = col2
+                    if (_ZOOM)
+                        _screen[ind2 + 1] = col2
+                }
+            }
+            set_pos(oled_x * 5, oled_y)
+            let ind02 = oled_x * 5 * (_ZOOM + 1) + oled_y * 128
+            let buf72 = _screen.slice(ind02, ind2 + 1)
+            buf72[0] = 0x40
+            pins.i2cWriteBuffer(_I2CAddr, buf72)
+        }
+    }
+
+
+
+    /**
+     * show a number in OLED
+     * @param olednum_x is X alis, eg: 0
+     * @param olednum_y is Y alis, eg: 0
+     * @param num is the number will be show, eg: 12
+     * @param color is number color, eg: 1
+     */
+    //% blockId=ext4_oled_show_number block="Display number – please choose location%oled| number%num"
+    //% parts=OLED12864_I2C trackArgs=0
+    //% olednum.fieldEditor="gridpicker"
+    //% olednum.fieldOptions.width=320
+    //% olednum.fieldOptions.columns=13
+    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% weight=9 blockGap=10
+    export function showNumber(olednum: Ext4Oled, num: number, color: number = 1) {
+        let olednum_x = 0
+        let olednum_y = 0
+        olednum_x = Math.floor(olednum / 13);
+        olednum_y = olednum % 13;
+        showString(olednum, num.toString(), color)
+    }
+
+    export function draw() {
         set_pos()
         pins.i2cWriteBuffer(_I2CAddr, _screen)
     }
 
-    function clearScreenBuffer() {
+    /**
+     * show text in OLED
+     * @param x is X alis, eg: 0
+     * @param y is Y alis, eg: 0
+     * @param s is the text will be show, eg: 'Hello!'
+     * @param color is string color, eg: 1
+     */
+    //% blockId=ext4_oled_show_string_xy block="Display string at x %x|y %y|at %s|color %color"
+    //% parts=OLED12864_I2C trackArgs=0
+    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% weight=80 blockGap=10 
+    export function showStringxy(x: number, y: number, s: string, color: number = 1) {
+        let col = 0
+        let e = 0
+        let ind = 0
+        for (let f = 0; f < s.length; f++) {
+            e = font[s.charCodeAt(f)]
+            for (let g = 0; g < 5; g++) {
+                col = 0
+                for (let h = 0; h < 5; h++) {
+                    if (e & (1 << (5 * g + h)))
+                        col |= (1 << (h + 1))
+                }
+                ind = (x + f) * 5 * (_ZOOM + 1) + y * 128 + g * (_ZOOM + 1) + 1
+                if (color == 0)
+                    col = 255 - col
+                _screen[ind] = col
+                if (_ZOOM)
+                    _screen[ind + 1] = col
+            }
+        }
+        set_pos(x * 5, y)
+        let ind0 = x * 5 * (_ZOOM + 1) + y * 128
+        let buf7 = _screen.slice(ind0, ind + 1)
+        buf7[0] = 0x40
+        pins.i2cWriteBuffer(_I2CAddr, buf7)
+    }
+
+    /**
+     * show a number in OLED
+     * @param x is X alis, eg: 0
+     * @param y is Y alis, eg: 0
+     * @param num is the number will be show, eg: 12
+     * @param color is number color, eg: 1
+     */
+    //% blockId=ext4_oled_show_number_xy block="Display number at x %x|y %y|number %num|color %color"
+    //% parts=OLED12864_I2C trackArgs=0
+    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% weight=80 blockGap=10
+    export function showNumberxy(x: number, y: number, num: number, color: number = 1) {
+        showStringxy(x, y, num.toString(), color)
+    }
+
+
+    /**
+     * clear screen
+     */
+    //% blockId=ext4_oled_clear block="clear"
+    //% parts=OLED12864_I2C trackArgs=0
+    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% weight=8 blockGap=10
+    export function clear() {
         _screen.fill(0)
         _screen[0] = 0x40
         draw()
     }
 
-    function initOled() {
+
+
+    /**
+     * OLED initialize
+     * @param addr is i2c addr, eg: 60
+     */
+    //% blockId=ext4_oled_init block="Initialize OLED "
+    //% parts=OLED12864_I2C trackArgs=0
+    //% weight=11 blockGap=10
+    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% blockGap=10  
+    export function init() {
         _I2CAddr = 60;
         cmd1(0xAE)       // SSD1306_DISPLAYOFF
         cmd1(0xA4)       // SSD1306_DISPLAYALLON_RESUME
@@ -359,69 +503,7 @@ namespace ext4_smartteam4 {
         cmd1(0xA6)       // SSD1306_NORMALDISPLAY
         cmd2(0xD6, 1)    // zoom on
         cmd1(0xAF)       // SSD1306_DISPLAYON
+        clear()
         _ZOOM = 1
-        _oledInitialized = true
-        clearScreenBuffer()
-    }
-
-    function ensureOledInit() {
-        if (!_oledInitialized) {
-            initOled()
-        }
-    }
-
-    /**
-     * Escribe texto en la OLED I2C (inicializa la pantalla si hace falta).
-     * @param texto texto a mostrar, eg: abc
-     * @param posicion celda de inicio en la grilla, eg: oled1
-     */
-    //% blockId=ext4_oled_show_text block="Escribir %texto en la posición %posicion de la OLED en el pin IIC"
-    //% parts=OLED12864_I2C trackArgs=0
-    //% texto.defl="abc"
-    //% posicion.fieldEditor="gridpicker"
-    //% posicion.fieldOptions.width=320
-    //% posicion.fieldOptions.columns=13
-    //% group="OLED" color="#4527A0" icon="\uf108"
-    //% weight=10 blockGap=10
-    export function showString(texto: string, posicion: Ext4Oled, color: number = 1) {
-        ensureOledInit()
-        let oled_x = posicion % 13;
-        let oled_y = Math.floor(posicion / 13);
-        let col2 = 0
-        let q = 0
-        let ind2 = 0
-        for (let r = 0; r < texto.length; r++) {
-            q = font[texto.charCodeAt(r)]
-            for (let o = 0; o < 5; o++) {
-                col2 = 0
-                for (let p = 0; p < 5; p++) {
-                    if (q & (1 << (5 * o + p)))
-                        col2 |= (1 << (p + 1))
-                }
-                ind2 = (oled_x + r) * 5 * (_ZOOM + 1) + oled_y * 128 + o * (_ZOOM + 1) + 1
-                if (color == 0)
-                    col2 = 255 - col2
-                _screen[ind2] = col2
-                if (_ZOOM)
-                    _screen[ind2 + 1] = col2
-            }
-        }
-        set_pos(oled_x * 5, oled_y)
-        let ind02 = oled_x * 5 * (_ZOOM + 1) + oled_y * 128
-        let buf72 = _screen.slice(ind02, ind2 + 1)
-        buf72[0] = 0x40
-        pins.i2cWriteBuffer(_I2CAddr, buf72)
-    }
-
-    /**
-     * Borra todos los textos de la OLED I2C.
-     */
-    //% blockId=ext4_oled_clear block="Borrar textos de la OLED en el pin IIC"
-    //% parts=OLED12864_I2C trackArgs=0
-    //% group="OLED" color="#4527A0" icon="\uf108"
-    //% weight=8 blockGap=10
-    export function clear() {
-        ensureOledInit()
-        clearScreenBuffer()
     }
 }
