@@ -1,5 +1,5 @@
 /**
- * Sensor ultrasónico — categoría nativa Entrada (input) / grupo sensores
+ * Sensor ultrasónico — SmartTEAM4 / subcategoría Sensores
  * Origen: ICreateRobot main.ts → ping (blockId sonar_ping)
  */
 
@@ -23,14 +23,14 @@ enum Ext4PingUnit {
     Inches,
 }
 
-namespace ext4_entradas {
+namespace ext4_smartteam4 {
 
     /**
      * Mide la distancia con el sensor ultrasónico en los pines indicados.
      * @param pin par trig/echo, eg: (P13,P0)
      * @param unit unidad de medida
      */
-    //% blockId=ext4_ultrasonic_sensor block="Ultrasonic Sensor %pin units %unit" blockNamespace=input color=#D400D4 group="sensores" weight=1 blockGap=8
+    //% blockId=ext4_ultrasonic_sensor block="Ultrasonic Sensor %pin units %unit" color=#D400D4 group="Sensores" weight=1 blockGap=8
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.width=220
     //% pin.fieldOptions.columns=2

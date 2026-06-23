@@ -1,6 +1,7 @@
 /**
- * Pin de conexión LED — SmartTEAM4
+ * Bloque LED — SmartTEAM4 / subcategoría Salidas
  */
+
 enum Ext4LedPin {
     //% block="0"
     P0 = 0,
@@ -16,9 +17,6 @@ enum Ext4LedPin {
     P15 = 16,
 }
 
-/**
- * Estado del LED — ON escribe 0, OFF escribe 1
- */
 enum Ext4LedEstado {
     //% block="ON"
     ON = 0,
@@ -26,24 +24,14 @@ enum Ext4LedEstado {
     OFF = 1,
 }
 
-/**
- * Bloque LED — categoría SALIDAS
- */
-namespace ext4_salidas {
+namespace ext4_smartteam4 {
 
-    // ─── led ─────────────────────────────────────────────────────────────────
-    // EDITAR: config/bloques.ts → BLOQUES.led
-    // COLOR:     #FF0000
-    // ICONO:     icons/salidas/led.png  (FA: \uf0eb)
-    // CATEGORÍA: SALIDAS
-    // SUBCATEGORÍA: LED
-    // ─────────────────────────────────────────────────────────────────────────
     /**
      * Escribe el estado del LED en el pin indicado.
      * @param pin pin de conexión, eg: P2
      * @param estado ON (0) u OFF (1), eg: ON
      */
-    //% blockId=ext4_led block="LED Pin %pin Estado %estado" color="#FF0000" icon="\uf0eb" group="LED" weight=100
+    //% blockId=ext4_led block="LED Pin %pin Estado %estado" color="#FF0000" icon="\uf0eb" group="Salidas" weight=100
     export function led(pin: Ext4LedPin, estado: Ext4LedEstado): void {
         pins.digitalWritePin(ledPinToDigital(pin), estado);
     }

@@ -1,7 +1,7 @@
 /**
  * Categorías disponibles en la caja de herramientas de SmartTEAM4.
  */
-type CategoriaId = "SMARTTEAM4" | "ENTRADAS" | "SALIDAS";
+type CategoriaId = "SMARTTEAM4";
 
 interface CategoriaConfig {
     /** Namespace TypeScript (no editar salvo que sepas lo que haces) */

@@ -1,5 +1,5 @@
 /**
- * Botón en pin — categoría nativa Entrada (input) / grupo sensores
+ * Botón en pin — SmartTEAM4 / subcategoría Sensores
  * Origen: ICreateRobot main.ts → buttonState
  */
 
@@ -33,13 +33,13 @@ enum Ext4CompareOperator {
     Gte,
 }
 
-namespace ext4_entradas {
+namespace ext4_smartteam4 {
 
     /**
      * Lee el estado del botón conectado al pin indicado.
      * @param pin pin de conexión, eg: P0
      */
-    //% blockId=ext4_button_sensor block="BOTÓN en el pin %pin" blockNamespace=input color=#D400D4 group="sensores" weight=0 blockGap=8
+    //% blockId=ext4_button_sensor block="BOTÓN en el pin %pin" color=#D400D4 group="Sensores" weight=0 blockGap=8
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.width=220
     //% pin.fieldOptions.columns=2
@@ -53,7 +53,7 @@ namespace ext4_entradas {
      * @param op operador de comparación
      * @param value valor a comparar, eg: 0
      */
-    //% blockId=ext4_button_compare block="$reading $op $value" blockNamespace=input color=#00979D group="sensores" weight=2 blockGap=8
+    //% blockId=ext4_button_compare block="$reading $op $value" color=#00979D group="Sensores" weight=2 blockGap=8
     //% reading.shadow=ext4_button_sensor
     //% value.shadow=math_number
     //% value.defl=0

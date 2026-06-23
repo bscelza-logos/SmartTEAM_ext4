@@ -9,7 +9,7 @@ Extensión MakeCode para SmartTEAM4 (micro:bit).
 3. Ve a **Extensiones** (icono de engranaje)
 4. Pega la URL del repositorio de GitHub:
    `https://github.com/bscelza-logos/SmartTEAM_ext4`
-5. Confirma la importación (versión actual: **0.0.8**)
+5. Confirma la importación (versión actual: **0.1.0**)
 
 ### Actualizar la extensión en un proyecto existente
 
@@ -17,7 +17,7 @@ MakeCode puede cachear extensiones importadas desde GitHub. Si no ves los bloque
 
 1. Eliminá la extensión **ext4** en **Extensiones**.
 2. Volvé a importar la URL de GitHub.
-3. Confirmá que la versión sea **0.0.8**.
+3. Confirmá que la versión sea **0.1.0**.
 
 ## Simulador y conexión USB
 
@@ -64,8 +64,8 @@ Extensión          →  SmartTEAM4
 | Nivel | Nombre que usamos | Dónde se ve | En SmartTEAM4 |
 |-------|-------------------|-------------|---------------|
 | 1 | **Extensión** | Al importar desde GitHub | **SmartTEAM4** |
-| 2 | **Categoría** | Fila en la caja de herramientas (izquierda) | **SmartTEAM4**, **Entrada** (nativa), **SALIDAS** |
-| 3 | **Subcategoría** | Encabezado dentro del panel al abrir una categoría | **Movimiento**, **Motores**, **OLED**, **sensores**, **LED** |
+| 2 | **Categoría** | Fila en la caja de herramientas (izquierda) | **SmartTEAM4** |
+| 3 | **Subcategoría** | Encabezado dentro del panel al abrir una categoría | **Sensores**, **Salidas**, **Movimiento**, **Motores**, **OLED** |
 | 4 | **Bloque** | Pieza que arrastrás al workspace | `BOTÓN en el pin …`, `LED Pin … Estado …` |
 
 En MakeCode, las subcategorías se llaman **groups** (`//% groups=[…]` en la categoría, `//% group="…"` en cada bloque).
@@ -100,11 +100,13 @@ Cuando hablemos de un bloque concreto, también podemos nombrar:
 | Traducción al español | `_locales/es/ext4-strings.json` | claves `{id:category}…` y `…\|block` |
 
 ---
-Al crear o abrir un proyecto con esta extensión, estarán disponibles:
+Al crear o abrir un proyecto con esta extensión, estarán disponibles en la categoría **SmartTEAM4**:
 
-- **SmartTEAM4** → subcategorías *Movimiento* (vacía), *Motores* (servos Geek I2C), *OLED* (pantalla I2C)
-- **Entrada** (categoría nativa de MakeCode) → grupo *sensores* → bloques `BOTÓN en el pin %pin`, `Ultrasonic Sensor %pin units %unit`
-- **SALIDAS** → subcategoría *LED* → bloque `LED Pin %pin Estado %estado`
+- **Sensores** → `BOTÓN en el pin %pin`, comparación booleana del botón, `Ultrasonic Sensor %pin units %unit`
+- **Salidas** → `LED Pin %pin Estado %estado`
+- **Movimiento** → *(vacía por ahora)*
+- **Motores** → servos Geek I2C
+- **OLED** → pantalla I2C
 
 ---
 
@@ -130,13 +132,9 @@ Usa solo estas categorías por ahora:
 
 | Categoría | Archivo de categoría | Subcategorías | Carpeta de bloques |
 |-----------|---------------------|---------------|-------------------|
-| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | Movimiento, Motores, OLED | `blocks/smartteam4/` |
-| Entrada (nativa `input`) | *(sin archivo propio)* | sensores | `blocks/entradas/` |
-| SALIDAS | `blocks/categorias/salidas.ts` | LED | `blocks/salidas/` |
+| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | Sensores, Salidas, Movimiento, Motores, OLED | `blocks/smartteam4/` |
 
-Los bloques de **Entrada** usan `blockNamespace=input` en la línea `//%` para aparecer en la categoría nativa de MakeCode, no en una categoría custom.
-
-Para cambiar subcategorías, edita `config/categorias.ts` → `subcategorias` y sincroniza `groups=[…]` en `blocks/categorias/<nombre>.ts`.
+Para cambiar subcategorías, edita `config/categorias.ts` → `subcategorias` y sincroniza `groups=[…]` en `blocks/categorias/smartteam4.ts`.
 
 ### 3. Iconos personalizados
 
@@ -190,10 +188,8 @@ SmarTEAM_EXT4/
 │   └── bloques.ts         # Metadatos editables de cada bloque
 ├── icons/                 # Iconos personalizados (PNG/SVG)
 ├── blocks/
-│   ├── categorias/        # Definición de cada categoría en la caja de herramientas
-│   ├── smartteam4/        # Bloques SmartTEAM4 (motores, OLED, movimiento)
-│   ├── entradas/          # Bloques en categoría nativa Entrada
-│   ├── salidas/           # Bloques de la categoría SALIDAS
+│   ├── categorias/        # Definición de la categoría SmartTEAM4
+│   ├── smartteam4/        # Bloques SmartTEAM4 (sensores, salidas, motores, OLED…)
 │   ├── _plantilla.ts      # Plantilla para bloques nuevos
 │   └── ...
 ├── main.ts
