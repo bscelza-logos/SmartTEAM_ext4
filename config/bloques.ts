@@ -45,14 +45,14 @@ const BLOQUES = {
         texto: "LED Puerto %puerto Estado %estado",
         weight: 100,
     },
-    motorRun: {
+    motorMover: {
         color: "#29B6F6",
         iconoFa: "\\uf013",
-        iconoArchivo: "icons/smartteam4/motor-run.png",
+        iconoArchivo: "icons/smartteam4/motor-move.png",
         categoria: "SMARTTEAM4",
         subcategoria: "Motores",
-        blockId: "ext4_motor_run",
-        texto: "|%motoraddress|Motor rotate at|%speed|",
+        blockId: "ext4_motor_move",
+        texto: "Motores %movimiento 🟢 🔴 || Velocidad %velocidad",
         weight: 100,
     },
     oledEscribir: {
