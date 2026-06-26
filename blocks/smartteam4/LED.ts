@@ -16,7 +16,7 @@ namespace ext4_smartteam4 {
      * @param puerto puerto GPIO, eg: P1
      * @param estado ON (0) u OFF (1), eg: ON
      */
-    //% blockId=ext4_led block="LED Puerto %puerto Estado %estado" color="#FF0000" icon="\uf0eb" group="Salidas" weight=100
+    //% blockId=ext4_led block="LED Puerto %puerto Estado %estado" color="#fcbb2b" icon="\uf0eb" group="Salidas" weight=100
     export function led(puerto: Ext4Puerto, estado: Ext4LedEstado): void {
         pins.digitalWritePin(puertoToGpioPin(puerto), estado);
     }

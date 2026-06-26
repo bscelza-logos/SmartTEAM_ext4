@@ -1,12 +1,16 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * BLOQUES EDITABLES — SmartTEAM4
+ * Colores por subgrupo:
+ *   Variables → #FF6680 (Variables nativas MakeCode)
+ *   Sensores / Salidas → #fcbb2b
+ *   Motores / OLED → #34c2eb
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 const BLOQUES = {
     cantidadSet: {
-        color: "#D400D4",
+        color: "#FF6680",
         iconoFa: "\\uf085",
         iconoArchivo: "icons/smartteam4/cantidad-set.png",
         categoria: "SMARTTEAM4",
@@ -16,7 +20,7 @@ const BLOQUES = {
         weight: 100,
     },
     cantidadGet: {
-        color: "#D400D4",
+        color: "#FF6680",
         iconoFa: "\\uf085",
         iconoArchivo: "icons/smartteam4/cantidad-get.png",
         categoria: "SMARTTEAM4",
@@ -26,7 +30,7 @@ const BLOQUES = {
         weight: 99,
     },
     cantidadSumar: {
-        color: "#D400D4",
+        color: "#FF6680",
         iconoFa: "\\uf085",
         iconoArchivo: "icons/smartteam4/cantidad-sumar.png",
         categoria: "SMARTTEAM4",
@@ -36,7 +40,7 @@ const BLOQUES = {
         weight: 98,
     },
     cantidadRestar: {
-        color: "#D400D4",
+        color: "#FF6680",
         iconoFa: "\\uf085",
         iconoArchivo: "icons/smartteam4/cantidad-restar.png",
         categoria: "SMARTTEAM4",
@@ -46,7 +50,7 @@ const BLOQUES = {
         weight: 97,
     },
     botonComparar: {
-        color: "#00979D",
+        color: "#fcbb2b",
         iconoFa: "\\uf11c",
         iconoArchivo: "icons/entradas/boton-compare.png",
         categoria: "SMARTTEAM4",
@@ -56,7 +60,7 @@ const BLOQUES = {
         weight: 0,
     },
     ultrasonicSensor: {
-        color: "#D400D4",
+        color: "#fcbb2b",
         iconoFa: "\\uf1ce",
         iconoArchivo: "icons/entradas/ultrasonic.png",
         categoria: "SMARTTEAM4",
@@ -66,7 +70,7 @@ const BLOQUES = {
         weight: 1,
     },
     ultrasonicDetecta: {
-        color: "#00979D",
+        color: "#fcbb2b",
         iconoFa: "\\uf1ce",
         iconoArchivo: "icons/entradas/ultrasonic-detect.png",
         categoria: "SMARTTEAM4",
@@ -76,7 +80,7 @@ const BLOQUES = {
         weight: 0,
     },
     led: {
-        color: "#FF0000",
+        color: "#fcbb2b",
         iconoFa: "\\uf0eb",
         iconoArchivo: "icons/salidas/led.png",
         categoria: "SMARTTEAM4",
@@ -86,17 +90,17 @@ const BLOQUES = {
         weight: 100,
     },
     motorMover: {
-        color: "#29B6F6",
+        color: "#34c2eb",
         iconoFa: "\\uf013",
         iconoArchivo: "icons/smartteam4/motor-move.png",
         categoria: "SMARTTEAM4",
         subcategoria: "Motores",
         blockId: "ext4_motor_move",
-        texto: "Motores %movimiento 🟢 🔴 || Velocidad %velocidad",
+        texto: "Motores %movimiento || Velocidad %velocidad",
         weight: 100,
     },
     oledEscribir: {
-        color: "#4527A0",
+        color: "#34c2eb",
         iconoFa: "\\uf108",
         iconoArchivo: "icons/smartteam4/oled-escribir.png",
         categoria: "SMARTTEAM4",
@@ -106,7 +110,7 @@ const BLOQUES = {
         weight: 10,
     },
     oledBorrar: {
-        color: "#4527A0",
+        color: "#34c2eb",
         iconoFa: "\\uf108",
         iconoArchivo: "icons/smartteam4/oled-borrar.png",
         categoria: "SMARTTEAM4",

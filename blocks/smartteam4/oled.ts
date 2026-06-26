@@ -3,162 +3,103 @@
  * Origen: ICreateRobot block/Av_OLED.ts
  */
 //OLED模块
-enum Ext4Oled {
-    //% block=" "
-    oled1 = 0,
-
-    //% block=" "
-    oled2 = 1,
-
-    //% block=" "
-    oled3 = 2,
-
-    //% block=" "
-    oled4 = 3,
-
-    //% block=" "
-    oled5 = 4,
-
-    //% block=" "
-    oled6 = 5,
-
-    //% block=" "
-    oled7 = 6,
-
-    //% block=" "
-    oled8 = 7,
-
-    //% block=" "
-    oled9 = 8,
-
-    //% block=" "
-    oled10 = 9,
-
-    //% block=" "
-    oled11 = 10,
-
-    //% block=" "
-    oled12 = 11,
-
-    //% block=" "
-    oled13 = 12,
-
-    //% block=" "
-    oled14 = 13,
-
-    //% block=" "
-    oled15 = 14,
-
-    //% block=" "
-    oled16 = 15,
-
-    //% block=" "
-    oled17 = 16,
-
-    //% block=" "
-    oled18 = 17,
-
-    //% block=" "
-    oled19 = 18,
-
-    //% block=" "
-    oled20 = 19,
-
-    //% block=" "
-    oled21 = 20,
-
-    //% block=" "
-    oled22 = 21,
-
-    //% block=" "
-    oled23 = 22,
-
-    //% block=" "
-    oled24 = 23,
-
-    //% block=" "
-    oled25 = 24,
-
-    //% block=" "
-    oled26 = 25,
-
-    //% block=" "
-    oled27 = 26,
-
-    //% block=" "
-    oled28 = 27,
-
-    //% block=" "
-    oled29 = 28,
-
-    //% block=" "
-    oled30 = 29,
-
-    //% block=" "
-    oled31 = 30,
-
-    //% block=" "
-    oled32 = 31,
-
-    //% block=" "
-    oled33 = 32,
-
-    //% block=" "
-    oled34 = 33,
-
-    //% block=" "
-    oled35 = 34,
-
-    //% block=" "
-    oled36 = 35,
-
-    //% block=" "
-    oled37 = 36,
-
-    //% block=" "
-    oled38 = 37,
-
-    //% block=" "
-    oled39 = 38,
-
-    //% block=" "
-    oled40 = 39,
-
-    //% block=" "
-    oled41 = 40,
-
-    //% block=" "
-    oled42 = 41,
-
-    //% block=" "
-    oled43 = 42,
-
-    //% block=" "
-    oled44 = 43,
-
-    //% block=" "
-    oled45 = 44,
-
-    //% block=" "
-    oled46 = 45,
-
-    //% block=" "
-    oled47 = 46,
-
-    //% block=" "
-    oled48 = 47,
-
-    //% block=" "
-    oled49 = 48,
-
-    //% block=" "
-    oled50 = 49,
-
-    //% block=" "
-    oled51 = 50,
-
-    //% block=" "
-    oled52 = 51,
+enum Ext4OledPosicion {
+    //% block="F0,C0"
+    F0_C0 = 0,
+    //% block="F0,C1"
+    F0_C1 = 1,
+    //% block="F0,C2"
+    F0_C2 = 2,
+    //% block="F0,C3"
+    F0_C3 = 3,
+    //% block="F0,C4"
+    F0_C4 = 4,
+    //% block="F0,C5"
+    F0_C5 = 5,
+    //% block="F0,C6"
+    F0_C6 = 6,
+    //% block="F0,C7"
+    F0_C7 = 7,
+    //% block="F0,C8"
+    F0_C8 = 8,
+    //% block="F0,C9"
+    F0_C9 = 9,
+    //% block="F0,C10"
+    F0_C10 = 10,
+    //% block="F0,C11"
+    F0_C11 = 11,
+    //% block="F1,C0"
+    F1_C0 = 12,
+    //% block="F1,C1"
+    F1_C1 = 13,
+    //% block="F1,C2"
+    F1_C2 = 14,
+    //% block="F1,C3"
+    F1_C3 = 15,
+    //% block="F1,C4"
+    F1_C4 = 16,
+    //% block="F1,C5"
+    F1_C5 = 17,
+    //% block="F1,C6"
+    F1_C6 = 18,
+    //% block="F1,C7"
+    F1_C7 = 19,
+    //% block="F1,C8"
+    F1_C8 = 20,
+    //% block="F1,C9"
+    F1_C9 = 21,
+    //% block="F1,C10"
+    F1_C10 = 22,
+    //% block="F1,C11"
+    F1_C11 = 23,
+    //% block="F2,C0"
+    F2_C0 = 24,
+    //% block="F2,C1"
+    F2_C1 = 25,
+    //% block="F2,C2"
+    F2_C2 = 26,
+    //% block="F2,C3"
+    F2_C3 = 27,
+    //% block="F2,C4"
+    F2_C4 = 28,
+    //% block="F2,C5"
+    F2_C5 = 29,
+    //% block="F2,C6"
+    F2_C6 = 30,
+    //% block="F2,C7"
+    F2_C7 = 31,
+    //% block="F2,C8"
+    F2_C8 = 32,
+    //% block="F2,C9"
+    F2_C9 = 33,
+    //% block="F2,C10"
+    F2_C10 = 34,
+    //% block="F2,C11"
+    F2_C11 = 35,
+    //% block="F3,C0"
+    F3_C0 = 36,
+    //% block="F3,C1"
+    F3_C1 = 37,
+    //% block="F3,C2"
+    F3_C2 = 38,
+    //% block="F3,C3"
+    F3_C3 = 39,
+    //% block="F3,C4"
+    F3_C4 = 40,
+    //% block="F3,C5"
+    F3_C5 = 41,
+    //% block="F3,C6"
+    F3_C6 = 42,
+    //% block="F3,C7"
+    F3_C7 = 43,
+    //% block="F3,C8"
+    F3_C8 = 44,
+    //% block="F3,C9"
+    F3_C9 = 45,
+    //% block="F3,C10"
+    F3_C10 = 46,
+    //% block="F3,C11"
+    F3_C11 = 47,
 }
 
 namespace ext4_smartteam4 {
@@ -373,20 +314,17 @@ namespace ext4_smartteam4 {
     /**
      * Escribe texto en la OLED I2C (inicializa la pantalla si hace falta).
      * @param texto texto a mostrar, eg: abc
-     * @param posicion celda de inicio en la grilla, eg: oled1
+     * @param posicion posicion F0,C0…F3,C11, eg: F0_C0
      */
     //% blockId=ext4_oled_show_text block="Escribir %texto en la posición %posicion de la OLED en el pin IIC"
     //% parts=OLED12864_I2C trackArgs=0
     //% texto.defl="abc"
-    //% posicion.fieldEditor="gridpicker"
-    //% posicion.fieldOptions.width=320
-    //% posicion.fieldOptions.columns=13
-    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
-    export function showString(texto: string, posicion: Ext4Oled, color: number = 1) {
+    export function showString(texto: string, posicion: Ext4OledPosicion, color: number = 1) {
         ensureOledInit()
-        let oled_x = posicion % 13;
-        let oled_y = Math.floor(posicion / 13);
+        let oled_x = posicion % 12;
+        let oled_y = Math.floor(posicion / 12);
         let col2 = 0
         let q = 0
         let ind2 = 0
@@ -418,7 +356,7 @@ namespace ext4_smartteam4 {
      */
     //% blockId=ext4_oled_clear block="Borrar textos de la OLED en el pin IIC"
     //% parts=OLED12864_I2C trackArgs=0
-    //% group="OLED" color="#4527A0" icon="\uf108"
+    //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=8 blockGap=10
     export function clear() {
         ensureOledInit()

@@ -30,10 +30,10 @@ namespace ext4_smartteam4 {
      * @param movimiento acción del robot, eg: Avanzar
      * @param velocidad velocidad en % (0–100), eg: 50
      */
-    //% blockId=ext4_motor_move block="Motores %movimiento 🟢 🔴 || Velocidad %velocidad"
+    //% blockId=ext4_motor_move block="Motores %movimiento || Velocidad %velocidad"
     //% expandableArgumentMode="toggle"
     //% velocidad.min=0 velocidad.max=100 velocidad.defl=50
-    //% group="Motores" color="#29B6F6" icon="\uf013" weight=100 blockGap=8
+    //% group="Motores" color="#34c2eb" icon="\uf013" weight=100 blockGap=8
     export function ext4MotoresMover(movimiento: Ext4MovimientoMotores, velocidad?: number): void {
         const v = clampSpeed(velocidad === undefined ? 50 : velocidad);
         const { rojo, verde } = movimientoToSpeeds(movimiento, v);
