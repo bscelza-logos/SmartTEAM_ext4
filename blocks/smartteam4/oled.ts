@@ -5,135 +5,101 @@
 //OLED模块
 enum Ext4OledPosicion {
     //% block=" "
-    P0 = 0,
-    //% block="0"
-    P1 = 1,
-    //% block="1"
-    P2 = 2,
-    //% block="2"
-    P3 = 3,
-    //% block="3"
-    P4 = 4,
-    //% block="4"
-    P5 = 5,
-    //% block="5"
-    P6 = 6,
-    //% block="6"
-    P7 = 7,
-    //% block="7"
-    P8 = 8,
-    //% block="8"
-    P9 = 9,
-    //% block="9"
-    P10 = 10,
-    //% block="10"
-    P11 = 11,
-    //% block="11"
-    P12 = 12,
-    //% block="0"
-    P13 = 13,
+    F0_C0 = 0,
     //% block=" "
-    P14 = 14,
+    F0_C1 = 1,
     //% block=" "
-    P15 = 15,
+    F0_C2 = 2,
     //% block=" "
-    P16 = 16,
+    F0_C3 = 3,
     //% block=" "
-    P17 = 17,
+    F0_C4 = 4,
     //% block=" "
-    P18 = 18,
+    F0_C5 = 5,
     //% block=" "
-    P19 = 19,
+    F0_C6 = 6,
     //% block=" "
-    P20 = 20,
+    F0_C7 = 7,
     //% block=" "
-    P21 = 21,
+    F0_C8 = 8,
     //% block=" "
-    P22 = 22,
+    F0_C9 = 9,
     //% block=" "
-    P23 = 23,
+    F0_C10 = 10,
     //% block=" "
-    P24 = 24,
+    F0_C11 = 11,
     //% block=" "
-    P25 = 25,
-    //% block="1"
-    P26 = 26,
+    F1_C0 = 12,
     //% block=" "
-    P27 = 27,
+    F1_C1 = 13,
     //% block=" "
-    P28 = 28,
+    F1_C2 = 14,
     //% block=" "
-    P29 = 29,
+    F1_C3 = 15,
     //% block=" "
-    P30 = 30,
+    F1_C4 = 16,
     //% block=" "
-    P31 = 31,
+    F1_C5 = 17,
     //% block=" "
-    P32 = 32,
+    F1_C6 = 18,
     //% block=" "
-    P33 = 33,
+    F1_C7 = 19,
     //% block=" "
-    P34 = 34,
+    F1_C8 = 20,
     //% block=" "
-    P35 = 35,
+    F1_C9 = 21,
     //% block=" "
-    P36 = 36,
+    F1_C10 = 22,
     //% block=" "
-    P37 = 37,
+    F1_C11 = 23,
     //% block=" "
-    P38 = 38,
-    //% block="2"
-    P39 = 39,
+    F2_C0 = 24,
     //% block=" "
-    P40 = 40,
+    F2_C1 = 25,
     //% block=" "
-    P41 = 41,
+    F2_C2 = 26,
     //% block=" "
-    P42 = 42,
+    F2_C3 = 27,
     //% block=" "
-    P43 = 43,
+    F2_C4 = 28,
     //% block=" "
-    P44 = 44,
+    F2_C5 = 29,
     //% block=" "
-    P45 = 45,
+    F2_C6 = 30,
     //% block=" "
-    P46 = 46,
+    F2_C7 = 31,
     //% block=" "
-    P47 = 47,
+    F2_C8 = 32,
     //% block=" "
-    P48 = 48,
+    F2_C9 = 33,
     //% block=" "
-    P49 = 49,
+    F2_C10 = 34,
     //% block=" "
-    P50 = 50,
+    F2_C11 = 35,
     //% block=" "
-    P51 = 51,
-    //% block="3"
-    P52 = 52,
+    F3_C0 = 36,
     //% block=" "
-    P53 = 53,
+    F3_C1 = 37,
     //% block=" "
-    P54 = 54,
+    F3_C2 = 38,
     //% block=" "
-    P55 = 55,
+    F3_C3 = 39,
     //% block=" "
-    P56 = 56,
+    F3_C4 = 40,
     //% block=" "
-    P57 = 57,
+    F3_C5 = 41,
     //% block=" "
-    P58 = 58,
+    F3_C6 = 42,
     //% block=" "
-    P59 = 59,
+    F3_C7 = 43,
     //% block=" "
-    P60 = 60,
+    F3_C8 = 44,
     //% block=" "
-    P61 = 61,
+    F3_C9 = 45,
     //% block=" "
-    P62 = 62,
+    F3_C10 = 46,
     //% block=" "
-    P63 = 63,
-    //% block=" "
-    P64 = 64,
+    F3_C11 = 47,
 }
 
 namespace ext4_smartteam4 {
@@ -339,21 +305,6 @@ namespace ext4_smartteam4 {
         clearScreenBuffer()
     }
 
-    function oledPosFromGridIndex(index: number): { x: number; y: number } {
-        const row = Math.idiv(index, 13);
-        const col = index % 13;
-        if (row === 0) {
-            if (col === 0) {
-                return { x: 0, y: 0 };
-            }
-            return { x: col - 1, y: 0 };
-        }
-        if (col === 0) {
-            return { x: 0, y: row - 1 };
-        }
-        return { x: col - 1, y: row - 1 };
-    }
-
     function ensureOledInit() {
         if (!_oledInitialized) {
             initOled()
@@ -370,14 +321,14 @@ namespace ext4_smartteam4 {
     //% texto.defl="abc"
     //% posicion.fieldEditor="gridpicker"
     //% posicion.fieldOptions.width=320
-    //% posicion.fieldOptions.columns=13
+    //% posicion.fieldOptions.columns=12
+    //% posicion.defl=Ext4OledPosicion.F0_C0
     //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
     export function showString(texto: string, posicion: Ext4OledPosicion, color: number = 1) {
         ensureOledInit()
-        let gridPos = oledPosFromGridIndex(posicion as number);
-        let oled_x = gridPos.x;
-        let oled_y = gridPos.y;
+        let oled_x = posicion % 12;
+        let oled_y = Math.idiv(posicion, 12);
         let col2 = 0
         let q = 0
         let ind2 = 0
