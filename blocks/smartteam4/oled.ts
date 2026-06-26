@@ -4,136 +4,201 @@
  */
 //OLED模块
 enum Ext4OledPosicion {
-    //% block=" "
-    P0 = 0,
-    //% block="0"
-    P1 = 1,
-    //% block="1"
-    P2 = 2,
-    //% block="2"
-    P3 = 3,
-    //% block="3"
-    P4 = 4,
-    //% block="4"
-    P5 = 5,
-    //% block="5"
-    P6 = 6,
-    //% block="6"
-    P7 = 7,
-    //% block="7"
-    P8 = 8,
-    //% block="8"
-    P9 = 9,
-    //% block="9"
-    P10 = 10,
-    //% block="10"
-    P11 = 11,
-    //% block="11"
-    P12 = 12,
-    //% block="0"
-    P13 = 13,
-    //% block=" "
-    P14 = 14,
-    //% block=" "
-    P15 = 15,
-    //% block=" "
-    P16 = 16,
-    //% block=" "
-    P17 = 17,
-    //% block=" "
-    P18 = 18,
-    //% block=" "
-    P19 = 19,
-    //% block=" "
-    P20 = 20,
-    //% block=" "
-    P21 = 21,
-    //% block=" "
-    P22 = 22,
-    //% block=" "
-    P23 = 23,
-    //% block=" "
-    P24 = 24,
-    //% block=" "
-    P25 = 25,
-    //% block="1"
-    P26 = 26,
-    //% block=" "
-    P27 = 27,
-    //% block=" "
-    P28 = 28,
-    //% block=" "
-    P29 = 29,
-    //% block=" "
-    P30 = 30,
-    //% block=" "
-    P31 = 31,
-    //% block=" "
-    P32 = 32,
-    //% block=" "
-    P33 = 33,
-    //% block=" "
-    P34 = 34,
-    //% block=" "
-    P35 = 35,
-    //% block=" "
-    P36 = 36,
-    //% block=" "
-    P37 = 37,
-    //% block=" "
-    P38 = 38,
-    //% block="2"
-    P39 = 39,
-    //% block=" "
-    P40 = 40,
-    //% block=" "
-    P41 = 41,
-    //% block=" "
-    P42 = 42,
-    //% block=" "
-    P43 = 43,
-    //% block=" "
-    P44 = 44,
-    //% block=" "
-    P45 = 45,
-    //% block=" "
-    P46 = 46,
-    //% block=" "
-    P47 = 47,
-    //% block=" "
-    P48 = 48,
-    //% block=" "
-    P49 = 49,
-    //% block=" "
-    P50 = 50,
-    //% block=" "
-    P51 = 51,
-    //% block="3"
-    P52 = 52,
-    //% block=" "
-    P53 = 53,
-    //% block=" "
-    P54 = 54,
-    //% block=" "
-    P55 = 55,
-    //% block=" "
-    P56 = 56,
-    //% block=" "
-    P57 = 57,
-    //% block=" "
-    P58 = 58,
-    //% block=" "
-    P59 = 59,
-    //% block=" "
-    P60 = 60,
-    //% block=" "
-    P61 = 61,
-    //% block=" "
-    P62 = 62,
-    //% block=" "
-    P63 = 63,
-    //% block=" "
-    P64 = 64,
+    //% blockHidden=1
+    //% block="F0,C0"
+    H_CORNER = 1099,
+    //% blockHidden=1
+    //% block="F0,C0"
+    H_C0 = 1000,
+    //% blockHidden=1
+    //% block="F0,C1"
+    H_C1 = 1001,
+    //% blockHidden=1
+    //% block="F0,C2"
+    H_C2 = 1002,
+    //% blockHidden=1
+    //% block="F0,C3"
+    H_C3 = 1003,
+    //% blockHidden=1
+    //% block="F0,C4"
+    H_C4 = 1004,
+    //% blockHidden=1
+    //% block="F0,C5"
+    H_C5 = 1005,
+    //% blockHidden=1
+    //% block="F0,C6"
+    H_C6 = 1006,
+    //% blockHidden=1
+    //% block="F0,C7"
+    H_C7 = 1007,
+    //% blockHidden=1
+    //% block="F0,C8"
+    H_C8 = 1008,
+    //% blockHidden=1
+    //% block="F0,C9"
+    H_C9 = 1009,
+    //% blockHidden=1
+    //% block="F0,C10"
+    H_C10 = 1010,
+    //% blockHidden=1
+    //% block="F0,C11"
+    H_C11 = 1011,
+    //% blockHidden=1
+    //% block="F0,C0"
+    H_R0 = 1012,
+    //% block="F0,C0"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C0 = 0,
+    //% block="F0,C1"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C1 = 1,
+    //% block="F0,C2"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C2 = 2,
+    //% block="F0,C3"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C3 = 3,
+    //% block="F0,C4"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C4 = 4,
+    //% block="F0,C5"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C5 = 5,
+    //% block="F0,C6"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C6 = 6,
+    //% block="F0,C7"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C7 = 7,
+    //% block="F0,C8"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C8 = 8,
+    //% block="F0,C9"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C9 = 9,
+    //% block="F0,C10"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C10 = 10,
+    //% block="F0,C11"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F0_C11 = 11,
+    //% blockHidden=1
+    //% block="F1,C0"
+    H_R1 = 1013,
+    //% block="F1,C0"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C0 = 12,
+    //% block="F1,C1"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C1 = 13,
+    //% block="F1,C2"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C2 = 14,
+    //% block="F1,C3"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C3 = 15,
+    //% block="F1,C4"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C4 = 16,
+    //% block="F1,C5"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C5 = 17,
+    //% block="F1,C6"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C6 = 18,
+    //% block="F1,C7"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C7 = 19,
+    //% block="F1,C8"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C8 = 20,
+    //% block="F1,C9"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C9 = 21,
+    //% block="F1,C10"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C10 = 22,
+    //% block="F1,C11"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F1_C11 = 23,
+    //% blockHidden=1
+    //% block="F2,C0"
+    H_R2 = 1014,
+    //% block="F2,C0"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C0 = 24,
+    //% block="F2,C1"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C1 = 25,
+    //% block="F2,C2"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C2 = 26,
+    //% block="F2,C3"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C3 = 27,
+    //% block="F2,C4"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C4 = 28,
+    //% block="F2,C5"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C5 = 29,
+    //% block="F2,C6"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C6 = 30,
+    //% block="F2,C7"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C7 = 31,
+    //% block="F2,C8"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C8 = 32,
+    //% block="F2,C9"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C9 = 33,
+    //% block="F2,C10"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C10 = 34,
+    //% block="F2,C11"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F2_C11 = 35,
+    //% blockHidden=1
+    //% block="F3,C0"
+    H_R3 = 1015,
+    //% block="F3,C0"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C0 = 36,
+    //% block="F3,C1"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C1 = 37,
+    //% block="F3,C2"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C2 = 38,
+    //% block="F3,C3"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C3 = 39,
+    //% block="F3,C4"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C4 = 40,
+    //% block="F3,C5"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C5 = 41,
+    //% block="F3,C6"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C6 = 42,
+    //% block="F3,C7"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C7 = 43,
+    //% block="F3,C8"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C8 = 44,
+    //% block="F3,C9"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C9 = 45,
+    //% block="F3,C10"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C10 = 46,
+    //% block="F3,C11"
+    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    F3_C11 = 47,
 }
 
 namespace ext4_smartteam4 {
@@ -339,19 +404,18 @@ namespace ext4_smartteam4 {
         clearScreenBuffer()
     }
 
-    function oledPosFromGridIndex(index: number): { x: number; y: number } {
-        const row = Math.idiv(index, 13);
-        const col = index % 13;
-        if (row === 0) {
-            if (col === 0) {
-                return { x: 0, y: 0 };
-            }
-            return { x: col - 1, y: 0 };
+    function oledPosFromValue(posicion: Ext4OledPosicion): { x: number; y: number } {
+        const v = posicion as number;
+        if (v >= 0 && v <= 47) {
+            return { x: v % 12, y: Math.idiv(v, 12) };
         }
-        if (col === 0) {
-            return { x: 0, y: row - 1 };
+        if (v >= 1000 && v <= 1011) {
+            return { x: v - 1000, y: 0 };
         }
-        return { x: col - 1, y: row - 1 };
+        if (v >= 1012 && v <= 1015) {
+            return { x: 0, y: v - 1012 };
+        }
+        return { x: 0, y: 0 };
     }
 
     function ensureOledInit() {
@@ -371,11 +435,14 @@ namespace ext4_smartteam4 {
     //% posicion.fieldEditor="gridpicker"
     //% posicion.fieldOptions.width=320
     //% posicion.fieldOptions.columns=13
+    //% posicion.fieldOptions.tooltips="false"
+    //% posicion.fieldOptions.data='[[" ", "Ext4OledPosicion.H_CORNER"], ["0", "Ext4OledPosicion.H_C0"], ["1", "Ext4OledPosicion.H_C1"], ["2", "Ext4OledPosicion.H_C2"], ["3", "Ext4OledPosicion.H_C3"], ["4", "Ext4OledPosicion.H_C4"], ["5", "Ext4OledPosicion.H_C5"], ["6", "Ext4OledPosicion.H_C6"], ["7", "Ext4OledPosicion.H_C7"], ["8", "Ext4OledPosicion.H_C8"], ["9", "Ext4OledPosicion.H_C9"], ["10", "Ext4OledPosicion.H_C10"], ["11", "Ext4OledPosicion.H_C11"], ["0", "Ext4OledPosicion.H_R0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C0","width":20,"height":20}, "Ext4OledPosicion.F0_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C1","width":20,"height":20}, "Ext4OledPosicion.F0_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C2","width":20,"height":20}, "Ext4OledPosicion.F0_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C3","width":20,"height":20}, "Ext4OledPosicion.F0_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C4","width":20,"height":20}, "Ext4OledPosicion.F0_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C5","width":20,"height":20}, "Ext4OledPosicion.F0_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C6","width":20,"height":20}, "Ext4OledPosicion.F0_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C7","width":20,"height":20}, "Ext4OledPosicion.F0_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C8","width":20,"height":20}, "Ext4OledPosicion.F0_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C9","width":20,"height":20}, "Ext4OledPosicion.F0_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C10","width":20,"height":20}, "Ext4OledPosicion.F0_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C11","width":20,"height":20}, "Ext4OledPosicion.F0_C11"], ["1", "Ext4OledPosicion.H_R1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C0","width":20,"height":20}, "Ext4OledPosicion.F1_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C1","width":20,"height":20}, "Ext4OledPosicion.F1_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C2","width":20,"height":20}, "Ext4OledPosicion.F1_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C3","width":20,"height":20}, "Ext4OledPosicion.F1_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C4","width":20,"height":20}, "Ext4OledPosicion.F1_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C5","width":20,"height":20}, "Ext4OledPosicion.F1_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C6","width":20,"height":20}, "Ext4OledPosicion.F1_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C7","width":20,"height":20}, "Ext4OledPosicion.F1_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C8","width":20,"height":20}, "Ext4OledPosicion.F1_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C9","width":20,"height":20}, "Ext4OledPosicion.F1_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C10","width":20,"height":20}, "Ext4OledPosicion.F1_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C11","width":20,"height":20}, "Ext4OledPosicion.F1_C11"], ["2", "Ext4OledPosicion.H_R2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C0","width":20,"height":20}, "Ext4OledPosicion.F2_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C1","width":20,"height":20}, "Ext4OledPosicion.F2_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C2","width":20,"height":20}, "Ext4OledPosicion.F2_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C3","width":20,"height":20}, "Ext4OledPosicion.F2_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C4","width":20,"height":20}, "Ext4OledPosicion.F2_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C5","width":20,"height":20}, "Ext4OledPosicion.F2_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C6","width":20,"height":20}, "Ext4OledPosicion.F2_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C7","width":20,"height":20}, "Ext4OledPosicion.F2_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C8","width":20,"height":20}, "Ext4OledPosicion.F2_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C9","width":20,"height":20}, "Ext4OledPosicion.F2_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C10","width":20,"height":20}, "Ext4OledPosicion.F2_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C11","width":20,"height":20}, "Ext4OledPosicion.F2_C11"], ["3", "Ext4OledPosicion.H_R3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C0","width":20,"height":20}, "Ext4OledPosicion.F3_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C1","width":20,"height":20}, "Ext4OledPosicion.F3_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C2","width":20,"height":20}, "Ext4OledPosicion.F3_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C3","width":20,"height":20}, "Ext4OledPosicion.F3_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C4","width":20,"height":20}, "Ext4OledPosicion.F3_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C5","width":20,"height":20}, "Ext4OledPosicion.F3_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C6","width":20,"height":20}, "Ext4OledPosicion.F3_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C7","width":20,"height":20}, "Ext4OledPosicion.F3_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C8","width":20,"height":20}, "Ext4OledPosicion.F3_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C9","width":20,"height":20}, "Ext4OledPosicion.F3_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C10","width":20,"height":20}, "Ext4OledPosicion.F3_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C11","width":20,"height":20}, "Ext4OledPosicion.F3_C11"]]'
+    //% posicion.defl=Ext4OledPosicion.F0_C0
     //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
     export function showString(texto: string, posicion: Ext4OledPosicion, color: number = 1) {
         ensureOledInit()
-        let gridPos = oledPosFromGridIndex(posicion as number);
+        let gridPos = oledPosFromValue(posicion);
         let oled_x = gridPos.x;
         let oled_y = gridPos.y;
         let col2 = 0
