@@ -3,7 +3,8 @@
  * BLOQUES EDITABLES — SmartTEAM4
  * Colores por subgrupo:
  *   Variables → #FF6680 (Variables nativas MakeCode)
- *   Sensores / Salidas → #fcbb2b
+ *   Sensores (sombra) → #fcbb2b | Sensores (lógica) → #00A4A6 (Lógica nativa)
+ *   Salidas → #fcbb2b
  *   Motores / OLED → #34c2eb
  * ═══════════════════════════════════════════════════════════════════════════
  */
@@ -50,7 +51,7 @@ const BLOQUES = {
         weight: 97,
     },
     botonComparar: {
-        color: "#fcbb2b",
+        color: "#00A4A6",
         iconoFa: "\\uf11c",
         iconoArchivo: "icons/entradas/boton-compare.png",
         categoria: "SMARTTEAM4",
@@ -59,18 +60,8 @@ const BLOQUES = {
         texto: "$reading $op $value",
         weight: 0,
     },
-    ultrasonicSensor: {
-        color: "#fcbb2b",
-        iconoFa: "\\uf1ce",
-        iconoArchivo: "icons/entradas/ultrasonic.png",
-        categoria: "SMARTTEAM4",
-        subcategoria: "Sensores",
-        blockId: "ext4_ultrasonic_sensor",
-        texto: "Ultrasonido en el pin %puerto",
-        weight: 1,
-    },
     ultrasonicDetecta: {
-        color: "#fcbb2b",
+        color: "#00A4A6",
         iconoFa: "\\uf1ce",
         iconoArchivo: "icons/entradas/ultrasonic-detect.png",
         categoria: "SMARTTEAM4",

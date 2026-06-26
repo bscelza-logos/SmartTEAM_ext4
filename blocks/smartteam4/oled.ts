@@ -4,102 +4,136 @@
  */
 //OLED模块
 enum Ext4OledPosicion {
-    //% block="F0,C0"
-    F0_C0 = 0,
-    //% block="F0,C1"
-    F0_C1 = 1,
-    //% block="F0,C2"
-    F0_C2 = 2,
-    //% block="F0,C3"
-    F0_C3 = 3,
-    //% block="F0,C4"
-    F0_C4 = 4,
-    //% block="F0,C5"
-    F0_C5 = 5,
-    //% block="F0,C6"
-    F0_C6 = 6,
-    //% block="F0,C7"
-    F0_C7 = 7,
-    //% block="F0,C8"
-    F0_C8 = 8,
-    //% block="F0,C9"
-    F0_C9 = 9,
-    //% block="F0,C10"
-    F0_C10 = 10,
-    //% block="F0,C11"
-    F0_C11 = 11,
-    //% block="F1,C0"
-    F1_C0 = 12,
-    //% block="F1,C1"
-    F1_C1 = 13,
-    //% block="F1,C2"
-    F1_C2 = 14,
-    //% block="F1,C3"
-    F1_C3 = 15,
-    //% block="F1,C4"
-    F1_C4 = 16,
-    //% block="F1,C5"
-    F1_C5 = 17,
-    //% block="F1,C6"
-    F1_C6 = 18,
-    //% block="F1,C7"
-    F1_C7 = 19,
-    //% block="F1,C8"
-    F1_C8 = 20,
-    //% block="F1,C9"
-    F1_C9 = 21,
-    //% block="F1,C10"
-    F1_C10 = 22,
-    //% block="F1,C11"
-    F1_C11 = 23,
-    //% block="F2,C0"
-    F2_C0 = 24,
-    //% block="F2,C1"
-    F2_C1 = 25,
-    //% block="F2,C2"
-    F2_C2 = 26,
-    //% block="F2,C3"
-    F2_C3 = 27,
-    //% block="F2,C4"
-    F2_C4 = 28,
-    //% block="F2,C5"
-    F2_C5 = 29,
-    //% block="F2,C6"
-    F2_C6 = 30,
-    //% block="F2,C7"
-    F2_C7 = 31,
-    //% block="F2,C8"
-    F2_C8 = 32,
-    //% block="F2,C9"
-    F2_C9 = 33,
-    //% block="F2,C10"
-    F2_C10 = 34,
-    //% block="F2,C11"
-    F2_C11 = 35,
-    //% block="F3,C0"
-    F3_C0 = 36,
-    //% block="F3,C1"
-    F3_C1 = 37,
-    //% block="F3,C2"
-    F3_C2 = 38,
-    //% block="F3,C3"
-    F3_C3 = 39,
-    //% block="F3,C4"
-    F3_C4 = 40,
-    //% block="F3,C5"
-    F3_C5 = 41,
-    //% block="F3,C6"
-    F3_C6 = 42,
-    //% block="F3,C7"
-    F3_C7 = 43,
-    //% block="F3,C8"
-    F3_C8 = 44,
-    //% block="F3,C9"
-    F3_C9 = 45,
-    //% block="F3,C10"
-    F3_C10 = 46,
-    //% block="F3,C11"
-    F3_C11 = 47,
+    //% block=" "
+    P0 = 0,
+    //% block="0"
+    P1 = 1,
+    //% block="1"
+    P2 = 2,
+    //% block="2"
+    P3 = 3,
+    //% block="3"
+    P4 = 4,
+    //% block="4"
+    P5 = 5,
+    //% block="5"
+    P6 = 6,
+    //% block="6"
+    P7 = 7,
+    //% block="7"
+    P8 = 8,
+    //% block="8"
+    P9 = 9,
+    //% block="9"
+    P10 = 10,
+    //% block="10"
+    P11 = 11,
+    //% block="11"
+    P12 = 12,
+    //% block="0"
+    P13 = 13,
+    //% block=" "
+    P14 = 14,
+    //% block=" "
+    P15 = 15,
+    //% block=" "
+    P16 = 16,
+    //% block=" "
+    P17 = 17,
+    //% block=" "
+    P18 = 18,
+    //% block=" "
+    P19 = 19,
+    //% block=" "
+    P20 = 20,
+    //% block=" "
+    P21 = 21,
+    //% block=" "
+    P22 = 22,
+    //% block=" "
+    P23 = 23,
+    //% block=" "
+    P24 = 24,
+    //% block=" "
+    P25 = 25,
+    //% block="1"
+    P26 = 26,
+    //% block=" "
+    P27 = 27,
+    //% block=" "
+    P28 = 28,
+    //% block=" "
+    P29 = 29,
+    //% block=" "
+    P30 = 30,
+    //% block=" "
+    P31 = 31,
+    //% block=" "
+    P32 = 32,
+    //% block=" "
+    P33 = 33,
+    //% block=" "
+    P34 = 34,
+    //% block=" "
+    P35 = 35,
+    //% block=" "
+    P36 = 36,
+    //% block=" "
+    P37 = 37,
+    //% block=" "
+    P38 = 38,
+    //% block="2"
+    P39 = 39,
+    //% block=" "
+    P40 = 40,
+    //% block=" "
+    P41 = 41,
+    //% block=" "
+    P42 = 42,
+    //% block=" "
+    P43 = 43,
+    //% block=" "
+    P44 = 44,
+    //% block=" "
+    P45 = 45,
+    //% block=" "
+    P46 = 46,
+    //% block=" "
+    P47 = 47,
+    //% block=" "
+    P48 = 48,
+    //% block=" "
+    P49 = 49,
+    //% block=" "
+    P50 = 50,
+    //% block=" "
+    P51 = 51,
+    //% block="3"
+    P52 = 52,
+    //% block=" "
+    P53 = 53,
+    //% block=" "
+    P54 = 54,
+    //% block=" "
+    P55 = 55,
+    //% block=" "
+    P56 = 56,
+    //% block=" "
+    P57 = 57,
+    //% block=" "
+    P58 = 58,
+    //% block=" "
+    P59 = 59,
+    //% block=" "
+    P60 = 60,
+    //% block=" "
+    P61 = 61,
+    //% block=" "
+    P62 = 62,
+    //% block=" "
+    P63 = 63,
+    //% block=" "
+    P64 = 64,
 }
 
 namespace ext4_smartteam4 {
@@ -305,6 +339,21 @@ namespace ext4_smartteam4 {
         clearScreenBuffer()
     }
 
+    function oledPosFromGridIndex(index: number): { x: number; y: number } {
+        const row = Math.idiv(index, 13);
+        const col = index % 13;
+        if (row === 0) {
+            if (col === 0) {
+                return { x: 0, y: 0 };
+            }
+            return { x: col - 1, y: 0 };
+        }
+        if (col === 0) {
+            return { x: 0, y: row - 1 };
+        }
+        return { x: col - 1, y: row - 1 };
+    }
+
     function ensureOledInit() {
         if (!_oledInitialized) {
             initOled()
@@ -319,12 +368,16 @@ namespace ext4_smartteam4 {
     //% blockId=ext4_oled_show_text block="Escribir %texto en la posición %posicion de la OLED en el pin IIC"
     //% parts=OLED12864_I2C trackArgs=0
     //% texto.defl="abc"
+    //% posicion.fieldEditor="gridpicker"
+    //% posicion.fieldOptions.width=320
+    //% posicion.fieldOptions.columns=13
     //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
     export function showString(texto: string, posicion: Ext4OledPosicion, color: number = 1) {
         ensureOledInit()
-        let oled_x = posicion % 12;
-        let oled_y = Math.floor(posicion / 12);
+        let gridPos = oledPosFromGridIndex(posicion as number);
+        let oled_x = gridPos.x;
+        let oled_y = gridPos.y;
         let col2 = 0
         let q = 0
         let ind2 = 0

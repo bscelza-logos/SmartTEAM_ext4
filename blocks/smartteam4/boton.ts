@@ -34,7 +34,7 @@ namespace ext4_smartteam4 {
      * @param op operador de comparación
      * @param value valor a comparar, eg: 0
      */
-    //% blockId=ext4_button_compare block="$reading $op $value" color=#fcbb2b group="Sensores" weight=0 blockGap=8
+    //% blockId=ext4_button_compare block="$reading $op $value" color=#00A4A6 colorSecondary=#fcbb2b group="Sensores" weight=0 blockGap=8
     //% reading.shadow=ext4_button_sensor
     //% value.shadow=math_number
     //% value.defl=0
