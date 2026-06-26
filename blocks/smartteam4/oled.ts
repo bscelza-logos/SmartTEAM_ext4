@@ -4,201 +4,136 @@
  */
 //OLED模块
 enum Ext4OledPosicion {
-    //% blockHidden=1
+    //% block=" "
+    P0 = 0,
+    //% block="0"
+    P1 = 1,
+    //% block="1"
+    P2 = 2,
+    //% block="2"
+    P3 = 3,
+    //% block="3"
+    P4 = 4,
+    //% block="4"
+    P5 = 5,
+    //% block="5"
+    P6 = 6,
+    //% block="6"
+    P7 = 7,
+    //% block="7"
+    P8 = 8,
+    //% block="8"
+    P9 = 9,
+    //% block="9"
+    P10 = 10,
+    //% block="10"
+    P11 = 11,
+    //% block="11"
+    P12 = 12,
+    //% block="0"
+    P13 = 13,
     //% block="F0,C0"
-    H_CORNER = 1099,
-    //% blockHidden=1
-    //% block="F0,C0"
-    H_C0 = 1000,
-    //% blockHidden=1
+    F0_C0 = 14,
     //% block="F0,C1"
-    H_C1 = 1001,
-    //% blockHidden=1
+    F0_C1 = 15,
     //% block="F0,C2"
-    H_C2 = 1002,
-    //% blockHidden=1
+    F0_C2 = 16,
     //% block="F0,C3"
-    H_C3 = 1003,
-    //% blockHidden=1
+    F0_C3 = 17,
     //% block="F0,C4"
-    H_C4 = 1004,
-    //% blockHidden=1
+    F0_C4 = 18,
     //% block="F0,C5"
-    H_C5 = 1005,
-    //% blockHidden=1
+    F0_C5 = 19,
     //% block="F0,C6"
-    H_C6 = 1006,
-    //% blockHidden=1
+    F0_C6 = 20,
     //% block="F0,C7"
-    H_C7 = 1007,
-    //% blockHidden=1
+    F0_C7 = 21,
     //% block="F0,C8"
-    H_C8 = 1008,
-    //% blockHidden=1
+    F0_C8 = 22,
     //% block="F0,C9"
-    H_C9 = 1009,
-    //% blockHidden=1
+    F0_C9 = 23,
     //% block="F0,C10"
-    H_C10 = 1010,
-    //% blockHidden=1
+    F0_C10 = 24,
     //% block="F0,C11"
-    H_C11 = 1011,
-    //% blockHidden=1
-    //% block="F0,C0"
-    H_R0 = 1012,
-    //% block="F0,C0"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C0 = 0,
-    //% block="F0,C1"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C1 = 1,
-    //% block="F0,C2"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C2 = 2,
-    //% block="F0,C3"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C3 = 3,
-    //% block="F0,C4"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C4 = 4,
-    //% block="F0,C5"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C5 = 5,
-    //% block="F0,C6"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C6 = 6,
-    //% block="F0,C7"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C7 = 7,
-    //% block="F0,C8"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C8 = 8,
-    //% block="F0,C9"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C9 = 9,
-    //% block="F0,C10"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C10 = 10,
-    //% block="F0,C11"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F0_C11 = 11,
-    //% blockHidden=1
+    F0_C11 = 25,
+    //% block="1"
+    P26 = 26,
     //% block="F1,C0"
-    H_R1 = 1013,
-    //% block="F1,C0"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C0 = 12,
+    F1_C0 = 27,
     //% block="F1,C1"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C1 = 13,
+    F1_C1 = 28,
     //% block="F1,C2"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C2 = 14,
+    F1_C2 = 29,
     //% block="F1,C3"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C3 = 15,
+    F1_C3 = 30,
     //% block="F1,C4"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C4 = 16,
+    F1_C4 = 31,
     //% block="F1,C5"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C5 = 17,
+    F1_C5 = 32,
     //% block="F1,C6"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C6 = 18,
+    F1_C6 = 33,
     //% block="F1,C7"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C7 = 19,
+    F1_C7 = 34,
     //% block="F1,C8"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C8 = 20,
+    F1_C8 = 35,
     //% block="F1,C9"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C9 = 21,
+    F1_C9 = 36,
     //% block="F1,C10"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C10 = 22,
+    F1_C10 = 37,
     //% block="F1,C11"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F1_C11 = 23,
-    //% blockHidden=1
+    F1_C11 = 38,
+    //% block="2"
+    P39 = 39,
     //% block="F2,C0"
-    H_R2 = 1014,
-    //% block="F2,C0"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C0 = 24,
+    F2_C0 = 40,
     //% block="F2,C1"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C1 = 25,
+    F2_C1 = 41,
     //% block="F2,C2"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C2 = 26,
+    F2_C2 = 42,
     //% block="F2,C3"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C3 = 27,
+    F2_C3 = 43,
     //% block="F2,C4"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C4 = 28,
+    F2_C4 = 44,
     //% block="F2,C5"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C5 = 29,
+    F2_C5 = 45,
     //% block="F2,C6"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C6 = 30,
+    F2_C6 = 46,
     //% block="F2,C7"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C7 = 31,
+    F2_C7 = 47,
     //% block="F2,C8"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C8 = 32,
+    F2_C8 = 48,
     //% block="F2,C9"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C9 = 33,
+    F2_C9 = 49,
     //% block="F2,C10"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C10 = 34,
+    F2_C10 = 50,
     //% block="F2,C11"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F2_C11 = 35,
-    //% blockHidden=1
+    F2_C11 = 51,
+    //% block="3"
+    P52 = 52,
     //% block="F3,C0"
-    H_R3 = 1015,
-    //% block="F3,C0"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C0 = 36,
+    F3_C0 = 53,
     //% block="F3,C1"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C1 = 37,
+    F3_C1 = 54,
     //% block="F3,C2"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C2 = 38,
+    F3_C2 = 55,
     //% block="F3,C3"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C3 = 39,
+    F3_C3 = 56,
     //% block="F3,C4"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C4 = 40,
+    F3_C4 = 57,
     //% block="F3,C5"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C5 = 41,
+    F3_C5 = 58,
     //% block="F3,C6"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C6 = 42,
+    F3_C6 = 59,
     //% block="F3,C7"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C7 = 43,
+    F3_C7 = 60,
     //% block="F3,C8"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C8 = 44,
+    F3_C8 = 61,
     //% block="F3,C9"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C9 = 45,
+    F3_C9 = 62,
     //% block="F3,C10"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C10 = 46,
+    F3_C10 = 63,
     //% block="F3,C11"
-    //% jresURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    F3_C11 = 47,
+    F3_C11 = 64,
 }
 
 namespace ext4_smartteam4 {
@@ -404,18 +339,19 @@ namespace ext4_smartteam4 {
         clearScreenBuffer()
     }
 
-    function oledPosFromValue(posicion: Ext4OledPosicion): { x: number; y: number } {
-        const v = posicion as number;
-        if (v >= 0 && v <= 47) {
-            return { x: v % 12, y: Math.idiv(v, 12) };
+    function oledPosFromGridIndex(index: number): { x: number; y: number } {
+        const row = Math.idiv(index, 13);
+        const col = index % 13;
+        if (row === 0) {
+            if (col === 0) {
+                return { x: 0, y: 0 };
+            }
+            return { x: col - 1, y: 0 };
         }
-        if (v >= 1000 && v <= 1011) {
-            return { x: v - 1000, y: 0 };
+        if (col === 0) {
+            return { x: 0, y: row - 1 };
         }
-        if (v >= 1012 && v <= 1015) {
-            return { x: 0, y: v - 1012 };
-        }
-        return { x: 0, y: 0 };
+        return { x: col - 1, y: row - 1 };
     }
 
     function ensureOledInit() {
@@ -435,14 +371,12 @@ namespace ext4_smartteam4 {
     //% posicion.fieldEditor="gridpicker"
     //% posicion.fieldOptions.width=320
     //% posicion.fieldOptions.columns=13
-    //% posicion.fieldOptions.tooltips="false"
-    //% posicion.fieldOptions.data='[[" ", "Ext4OledPosicion.H_CORNER"], ["0", "Ext4OledPosicion.H_C0"], ["1", "Ext4OledPosicion.H_C1"], ["2", "Ext4OledPosicion.H_C2"], ["3", "Ext4OledPosicion.H_C3"], ["4", "Ext4OledPosicion.H_C4"], ["5", "Ext4OledPosicion.H_C5"], ["6", "Ext4OledPosicion.H_C6"], ["7", "Ext4OledPosicion.H_C7"], ["8", "Ext4OledPosicion.H_C8"], ["9", "Ext4OledPosicion.H_C9"], ["10", "Ext4OledPosicion.H_C10"], ["11", "Ext4OledPosicion.H_C11"], ["0", "Ext4OledPosicion.H_R0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C0","width":20,"height":20}, "Ext4OledPosicion.F0_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C1","width":20,"height":20}, "Ext4OledPosicion.F0_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C2","width":20,"height":20}, "Ext4OledPosicion.F0_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C3","width":20,"height":20}, "Ext4OledPosicion.F0_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C4","width":20,"height":20}, "Ext4OledPosicion.F0_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C5","width":20,"height":20}, "Ext4OledPosicion.F0_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C6","width":20,"height":20}, "Ext4OledPosicion.F0_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C7","width":20,"height":20}, "Ext4OledPosicion.F0_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C8","width":20,"height":20}, "Ext4OledPosicion.F0_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C9","width":20,"height":20}, "Ext4OledPosicion.F0_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C10","width":20,"height":20}, "Ext4OledPosicion.F0_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F0,C11","width":20,"height":20}, "Ext4OledPosicion.F0_C11"], ["1", "Ext4OledPosicion.H_R1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C0","width":20,"height":20}, "Ext4OledPosicion.F1_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C1","width":20,"height":20}, "Ext4OledPosicion.F1_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C2","width":20,"height":20}, "Ext4OledPosicion.F1_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C3","width":20,"height":20}, "Ext4OledPosicion.F1_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C4","width":20,"height":20}, "Ext4OledPosicion.F1_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C5","width":20,"height":20}, "Ext4OledPosicion.F1_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C6","width":20,"height":20}, "Ext4OledPosicion.F1_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C7","width":20,"height":20}, "Ext4OledPosicion.F1_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C8","width":20,"height":20}, "Ext4OledPosicion.F1_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C9","width":20,"height":20}, "Ext4OledPosicion.F1_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C10","width":20,"height":20}, "Ext4OledPosicion.F1_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F1,C11","width":20,"height":20}, "Ext4OledPosicion.F1_C11"], ["2", "Ext4OledPosicion.H_R2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C0","width":20,"height":20}, "Ext4OledPosicion.F2_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C1","width":20,"height":20}, "Ext4OledPosicion.F2_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C2","width":20,"height":20}, "Ext4OledPosicion.F2_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C3","width":20,"height":20}, "Ext4OledPosicion.F2_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C4","width":20,"height":20}, "Ext4OledPosicion.F2_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C5","width":20,"height":20}, "Ext4OledPosicion.F2_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C6","width":20,"height":20}, "Ext4OledPosicion.F2_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C7","width":20,"height":20}, "Ext4OledPosicion.F2_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C8","width":20,"height":20}, "Ext4OledPosicion.F2_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C9","width":20,"height":20}, "Ext4OledPosicion.F2_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C10","width":20,"height":20}, "Ext4OledPosicion.F2_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F2,C11","width":20,"height":20}, "Ext4OledPosicion.F2_C11"], ["3", "Ext4OledPosicion.H_R3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C0","width":20,"height":20}, "Ext4OledPosicion.F3_C0"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C1","width":20,"height":20}, "Ext4OledPosicion.F3_C1"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C2","width":20,"height":20}, "Ext4OledPosicion.F3_C2"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C3","width":20,"height":20}, "Ext4OledPosicion.F3_C3"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C4","width":20,"height":20}, "Ext4OledPosicion.F3_C4"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C5","width":20,"height":20}, "Ext4OledPosicion.F3_C5"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C6","width":20,"height":20}, "Ext4OledPosicion.F3_C6"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C7","width":20,"height":20}, "Ext4OledPosicion.F3_C7"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C8","width":20,"height":20}, "Ext4OledPosicion.F3_C8"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C9","width":20,"height":20}, "Ext4OledPosicion.F3_C9"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C10","width":20,"height":20}, "Ext4OledPosicion.F3_C10"], [{"src":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","alt":"F3,C11","width":20,"height":20}, "Ext4OledPosicion.F3_C11"]]'
     //% posicion.defl=Ext4OledPosicion.F0_C0
     //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
     export function showString(texto: string, posicion: Ext4OledPosicion, color: number = 1) {
         ensureOledInit()
-        let gridPos = oledPosFromValue(posicion);
+        let gridPos = oledPosFromGridIndex(posicion as number);
         let oled_x = gridPos.x;
         let oled_y = gridPos.y;
         let col2 = 0
