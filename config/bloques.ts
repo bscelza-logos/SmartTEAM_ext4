@@ -97,7 +97,7 @@ const BLOQUES = {
         categoria: "SMARTTEAM4",
         subcategoria: "OLED",
         blockId: "ext4_oled_show_text",
-        texto: "Escribir %texto en la posición %posicion de la OLED en el pin IIC",
+        texto: "Escribir %texto en la fila %fila y columna %columna",
         weight: 10,
     },
     oledBorrar: {

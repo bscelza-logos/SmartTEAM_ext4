@@ -3,103 +3,44 @@
  * Origen: ICreateRobot block/Av_OLED.ts
  */
 //OLED模块
-enum Ext4OledPosicion {
-    //% block=" "
-    F0_C0 = 0,
-    //% block=" "
-    F0_C1 = 1,
-    //% block=" "
-    F0_C2 = 2,
-    //% block=" "
-    F0_C3 = 3,
-    //% block=" "
-    F0_C4 = 4,
-    //% block=" "
-    F0_C5 = 5,
-    //% block=" "
-    F0_C6 = 6,
-    //% block=" "
-    F0_C7 = 7,
-    //% block=" "
-    F0_C8 = 8,
-    //% block=" "
-    F0_C9 = 9,
-    //% block=" "
-    F0_C10 = 10,
-    //% block=" "
-    F0_C11 = 11,
-    //% block=" "
-    F1_C0 = 12,
-    //% block=" "
-    F1_C1 = 13,
-    //% block=" "
-    F1_C2 = 14,
-    //% block=" "
-    F1_C3 = 15,
-    //% block=" "
-    F1_C4 = 16,
-    //% block=" "
-    F1_C5 = 17,
-    //% block=" "
-    F1_C6 = 18,
-    //% block=" "
-    F1_C7 = 19,
-    //% block=" "
-    F1_C8 = 20,
-    //% block=" "
-    F1_C9 = 21,
-    //% block=" "
-    F1_C10 = 22,
-    //% block=" "
-    F1_C11 = 23,
-    //% block=" "
-    F2_C0 = 24,
-    //% block=" "
-    F2_C1 = 25,
-    //% block=" "
-    F2_C2 = 26,
-    //% block=" "
-    F2_C3 = 27,
-    //% block=" "
-    F2_C4 = 28,
-    //% block=" "
-    F2_C5 = 29,
-    //% block=" "
-    F2_C6 = 30,
-    //% block=" "
-    F2_C7 = 31,
-    //% block=" "
-    F2_C8 = 32,
-    //% block=" "
-    F2_C9 = 33,
-    //% block=" "
-    F2_C10 = 34,
-    //% block=" "
-    F2_C11 = 35,
-    //% block=" "
-    F3_C0 = 36,
-    //% block=" "
-    F3_C1 = 37,
-    //% block=" "
-    F3_C2 = 38,
-    //% block=" "
-    F3_C3 = 39,
-    //% block=" "
-    F3_C4 = 40,
-    //% block=" "
-    F3_C5 = 41,
-    //% block=" "
-    F3_C6 = 42,
-    //% block=" "
-    F3_C7 = 43,
-    //% block=" "
-    F3_C8 = 44,
-    //% block=" "
-    F3_C9 = 45,
-    //% block=" "
-    F3_C10 = 46,
-    //% block=" "
-    F3_C11 = 47,
+enum Ext4OledFila {
+    //% block="0"
+    F0 = 0,
+    //% block="1"
+    F1 = 1,
+    //% block="2"
+    F2 = 2,
+    //% block="3"
+    F3 = 3,
+    //% block="4"
+    F4 = 4,
+}
+
+enum Ext4OledColumna {
+    //% block="0"
+    C0 = 0,
+    //% block="1"
+    C1 = 1,
+    //% block="2"
+    C2 = 2,
+    //% block="3"
+    C3 = 3,
+    //% block="4"
+    C4 = 4,
+    //% block="5"
+    C5 = 5,
+    //% block="6"
+    C6 = 6,
+    //% block="7"
+    C7 = 7,
+    //% block="8"
+    C8 = 8,
+    //% block="9"
+    C9 = 9,
+    //% block="10"
+    C10 = 10,
+    //% block="11"
+    C11 = 11,
 }
 
 namespace ext4_smartteam4 {
@@ -314,21 +255,20 @@ namespace ext4_smartteam4 {
     /**
      * Escribe texto en la OLED I2C (inicializa la pantalla si hace falta).
      * @param texto texto a mostrar, eg: abc
-     * @param posicion posicion F0,C0…F3,C11, eg: F0_C0
+     * @param fila fila de la OLED (0–4), eg: F0
+     * @param columna columna de la OLED (0–11), eg: C0
      */
-    //% blockId=ext4_oled_show_text block="Escribir %texto en la posición %posicion de la OLED en el pin IIC"
+    //% blockId=ext4_oled_show_text block="Escribir %texto en la fila %fila y columna %columna"
     //% parts=OLED12864_I2C trackArgs=0
     //% texto.defl="abc"
-    //% posicion.fieldEditor="gridpicker"
-    //% posicion.fieldOptions.width=320
-    //% posicion.fieldOptions.columns=12
-    //% posicion.defl=Ext4OledPosicion.F0_C0
+    //% fila.defl=Ext4OledFila.F0
+    //% columna.defl=Ext4OledColumna.C0
     //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
-    export function showString(texto: string, posicion: Ext4OledPosicion, color: number = 1) {
+    export function showString(texto: string, fila: Ext4OledFila, columna: Ext4OledColumna, color: number = 1) {
         ensureOledInit()
-        let oled_x = posicion % 12;
-        let oled_y = Math.idiv(posicion, 12);
+        let oled_x = columna;
+        let oled_y = fila;
         let col2 = 0
         let q = 0
         let ind2 = 0
