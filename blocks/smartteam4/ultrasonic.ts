@@ -44,7 +44,7 @@ namespace ext4_smartteam4 {
 
 function medirUltrasonicoCm(puerto: Ext4Puerto): number {
     const { trig, echo } = puertoToUltrasonicTrigEcho(puerto);
-    const maxCmDistance = 500;
+    const maxCmDistance = 400;
 
     pins.setPull(trig, PinPullMode.PullNone);
     pins.digitalWritePin(trig, 0);
@@ -53,7 +53,7 @@ function medirUltrasonicoCm(puerto: Ext4Puerto): number {
     control.waitMicros(10);
     pins.digitalWritePin(trig, 0);
 
-    const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 50);
-    const distance = d * 34 / 2 / 1000 * 3 / 2;
+    const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
+    const distance = d * 34 / 2000;
     return Math.round(distance);
 }

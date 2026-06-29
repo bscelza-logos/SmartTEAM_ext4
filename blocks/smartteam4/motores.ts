@@ -22,8 +22,8 @@ enum Ext4MovimientoMotores {
 
 namespace ext4_smartteam4 {
 
-    const MOTOR_ROJO = 81;
-    const MOTOR_VERDE = 82;
+    let MOTOR_ROJO = 81;   // Motor derecho — verificar con bloque Escanear I2C
+    let MOTOR_VERDE = 82;  // Motor izquierdo — verificar con bloque Escanear I2C
 
     /**
      * Mueve ambos motores según la acción elegida.
@@ -40,20 +40,19 @@ namespace ext4_smartteam4 {
         runDualMotors(rojo, verde);
     }
 
-    function movimientoToSpeeds(movimiento: Ext4MovimientoMotores, velocidad: number): { rojo: number; verde: number } {
+    function movimientoToSpeeds(
+        movimiento: Ext4MovimientoMotores,
+        velocidad: number
+    ): { rojo: number; verde: number } {
         switch (movimiento) {
             case Ext4MovimientoMotores.Avanzar:
-                // Ambos horario
-                return { rojo: -velocidad, verde: velocidad };
-            case Ext4MovimientoMotores.Retroceder:
-                // Verde horario, rojo anti-horario
                 return { rojo: velocidad, verde: velocidad };
-            case Ext4MovimientoMotores.GirarDerecha:
-                // Ambos anti-horario
-                return { rojo: velocidad, verde: -velocidad };
-            case Ext4MovimientoMotores.GirarIzquierda:
-                // Ambos horario (espejo del giro derecha)
+            case Ext4MovimientoMotores.Retroceder:
                 return { rojo: -velocidad, verde: -velocidad };
+            case Ext4MovimientoMotores.GirarDerecha:
+                return { rojo: -velocidad, verde: velocidad };
+            case Ext4MovimientoMotores.GirarIzquierda:
+                return { rojo: velocidad, verde: -velocidad };
             case Ext4MovimientoMotores.Frenar:
                 return { rojo: 0, verde: 0 };
             default:
@@ -108,5 +107,33 @@ namespace ext4_smartteam4 {
 
         pins.i2cWriteBuffer(MOTOR_ROJO, bufRojo);
         pins.i2cWriteBuffer(MOTOR_VERDE, bufVerde);
+    }
+
+    /**
+     * Escanea el bus I2C y muestra en la pantalla LED las direcciones
+     * que responden. Útil para encontrar la dirección real de los motores.
+     * Muestra cada dirección encontrada como número durante 1 segundo.
+     */
+    //% blockId=ext4_i2c_scan block="Escanear bus I2C (mostrar direcciones)"
+    //% group="Motores" color="#34c2eb" icon="\uf013" weight=1 blockGap=8
+    export function escanearI2C(): void {
+        let encontrados = 0;
+        for (let addr = 1; addr < 128; addr++) {
+            // Intenta escribir 0 bytes; si no hay error, el dispositivo responde
+            let buf = pins.createBuffer(1);
+            buf[0] = 0;
+            pins.i2cWriteBuffer(addr, buf);
+            // En micro:bit PXT, i2cWriteBuffer no lanza excepción; usamos
+            // i2cReadBuffer para detectar ACK
+            let resp = pins.i2cReadBuffer(addr, 1);
+            if (resp.length > 0) {
+                basic.showNumber(addr);
+                basic.pause(1000);
+                encontrados += 1;
+            }
+        }
+        if (encontrados == 0) {
+            basic.showString("?");
+        }
     }
 }

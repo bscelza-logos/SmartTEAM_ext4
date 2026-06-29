@@ -44,7 +44,7 @@ enum Ext4OledColumna {
 }
 
 namespace ext4_smartteam4 {
-    let _I2CAddr = 0;
+    let _I2CAddr = 60;  // SSD1306 dirección I2C por defecto (0x3C)
     let _screen = pins.createBuffer(1025);
     let _buf2 = pins.createBuffer(2);
     let _buf3 = pins.createBuffer(3);
@@ -183,8 +183,9 @@ namespace ext4_smartteam4 {
 
 
     function cmd1(d: number) {
-        let n = d % 256;
-        pins.i2cWriteNumber(_I2CAddr, n, NumberFormat.UInt16BE);
+        _buf2[0] = 0x00;  // byte de control: Co=0, D/C#=0 → comando
+        _buf2[1] = d & 0xFF;
+        pins.i2cWriteBuffer(_I2CAddr, _buf2);
     }
 
     function cmd2(d1: number, d2: number) {
@@ -210,8 +211,15 @@ namespace ext4_smartteam4 {
     }
 
     function draw() {
-        set_pos()
-        pins.i2cWriteBuffer(_I2CAddr, _screen)
+        for (let page = 0; page < 8; page++) {
+            set_pos(0, page);
+            let pageBuf = pins.createBuffer(129);
+            pageBuf[0] = 0x40;  // byte de control: datos
+            for (let i = 0; i < 128; i++) {
+                pageBuf[i + 1] = _screen[page * 128 + i + 1];
+            }
+            pins.i2cWriteBuffer(_I2CAddr, pageBuf);
+        }
     }
 
     function clearScreenBuffer() {
@@ -231,7 +239,7 @@ namespace ext4_smartteam4 {
         cmd2(0x8D, 0x14) // SSD1306_CHARGEPUMP
         cmd2(0x20, 0x00) // SSD1306_MEMORYMODE
         cmd3(0x21, 0, 127) // SSD1306_COLUMNADDR
-        cmd3(0x22, 0, 63)  // SSD1306_PAGEADDR
+        cmd3(0x22, 0, 7)   // SSD1306_PAGEADDR (0 a 7, no 63)
         cmd1(0xa0 | 0x1) // SSD1306_SEGREMAP
         cmd1(0xc8)       // SSD1306_COMSCANDEC
         cmd2(0xDA, 0x12) // SSD1306_SETCOMPINS
@@ -239,9 +247,8 @@ namespace ext4_smartteam4 {
         cmd2(0xd9, 0xF1) // SSD1306_SETPRECHARGE
         cmd2(0xDB, 0x40) // SSD1306_SETVCOMDETECT
         cmd1(0xA6)       // SSD1306_NORMALDISPLAY
-        cmd2(0xD6, 1)    // zoom on
         cmd1(0xAF)       // SSD1306_DISPLAYON
-        _ZOOM = 1
+        _ZOOM = 0
         _oledInitialized = true
         clearScreenBuffer()
     }

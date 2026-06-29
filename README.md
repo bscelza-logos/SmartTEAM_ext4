@@ -9,7 +9,7 @@ Extensión MakeCode para SmartTEAM4 (micro:bit).
 3. Ve a **Extensiones** (icono de engranaje)
 4. Pega la URL del repositorio de GitHub:
    `https://github.com/bscelza-logos/SmartTEAM_ext4`
-5. Confirma la importación (versión actual: **0.1.0**)
+5. Confirma la importación (versión actual: **2.0.0**)
 
 ### Actualizar la extensión en un proyecto existente
 
@@ -17,7 +17,7 @@ MakeCode puede cachear extensiones importadas desde GitHub. Si no ves los bloque
 
 1. Eliminá la extensión **ext4** en **Extensiones**.
 2. Volvé a importar la URL de GitHub.
-3. Confirmá que la versión sea **0.1.0**.
+3. Confirmá que la versión sea **2.0.0**.
 
 ## Simulador y conexión USB
 
@@ -65,7 +65,7 @@ Extensión          →  SmartTEAM4
 |-------|-------------------|-------------|---------------|
 | 1 | **Extensión** | Al importar desde GitHub | **SmartTEAM4** |
 | 2 | **Categoría** | Fila en la caja de herramientas (izquierda) | **SmartTEAM4** |
-| 3 | **Subcategoría** | Encabezado dentro del panel al abrir una categoría | **Sensores**, **Salidas**, **Movimiento**, **Motores**, **OLED** |
+| 3 | **Subcategoría** | Encabezado dentro del panel al abrir una categoría | **Sensores**, **Salidas**, **Motores**, **OLED** |
 | 4 | **Bloque** | Pieza que arrastrás al workspace | `BOTÓN en el pin …`, `LED Pin … Estado …` |
 
 En MakeCode, las subcategorías se llaman **groups** (`//% groups=[…]` en la categoría, `//% group="…"` en cada bloque).
@@ -104,7 +104,6 @@ Al crear o abrir un proyecto con esta extensión, estarán disponibles en la cat
 
 - **Sensores** → `BOTÓN en el pin %pin`, comparación booleana del botón, `Ultrasonic Sensor %pin units %unit`
 - **Salidas** → `LED Pin %pin Estado %estado`
-- **Movimiento** → *(vacía por ahora)*
 - **Motores** → servos Geek I2C
 - **OLED** → pantalla I2C
 
@@ -132,7 +131,7 @@ Usa solo estas categorías por ahora:
 
 | Categoría | Archivo de categoría | Subcategorías | Carpeta de bloques |
 |-----------|---------------------|---------------|-------------------|
-| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | Sensores, Salidas, Movimiento, Motores, OLED | `blocks/smartteam4/` |
+| SmartTEAM4 | `blocks/categorias/smartteam4.ts` | Sensores, Salidas, Motores, OLED | `blocks/smartteam4/` |
 
 Para cambiar subcategorías, edita `config/categorias.ts` → `subcategorias` y sincroniza `groups=[…]` en `blocks/categorias/smartteam4.ts`.
 
