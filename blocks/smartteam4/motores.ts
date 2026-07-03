@@ -1,139 +1,171 @@
-/**
- * Movimiento de motores — SmartTEAM4 / subcategoría Motores
- * Origen: ICreateRobot block/M_motor.ts (runDMotor)
- *
- * Disposición del robot (vista desde arriba, frente arriba):
- * - Motor izquierdo: VERDE (I2C 82)
- * - Motor derecho: ROJO (I2C 81)
- */
-
-enum Ext4MovimientoMotores {
-    //% block="Avanzar"
-    Avanzar,
-    //% block="Retroceder"
-    Retroceder,
-    //% block="Girar a la derecha"
-    GirarDerecha,
-    //% block="Girar a la Izquierda"
-    GirarIzquierda,
-    //% block="Frenar"
-    Frenar,
-}
-
 namespace ext4_smartteam4 {
 
-    let MOTOR_ROJO = 81;   // Motor derecho — verificar con bloque Escanear I2C
-    let MOTOR_VERDE = 82;  // Motor izquierdo — verificar con bloque Escanear I2C
+    // ── Direcciones I2C de los motores ──────────────────────────────
+    // Motor ROJO  = derecho  = caraddress1 (se niega internamente)
+    // Motor VERDE = izquierdo = caraddress2
+    let MOTOR_ROJO = 81    // 0x51 — verificado en código oficial ICreateRobot
+    let MOTOR_VERDE = 82   // 0x52 — verificado en código oficial ICreateRobot
 
-    /**
-     * Mueve ambos motores según la acción elegida.
-     * @param movimiento acción del robot, eg: Avanzar
-     * @param velocidad velocidad en % (0–100), eg: 50
-     */
-    //% blockId=ext4_motor_move block="Motores %movimiento || Velocidad %velocidad"
-    //% expandableArgumentMode="toggle"
-    //% velocidad.min=0 velocidad.max=100 velocidad.defl=50
-    //% group="Motores" color="#34c2eb" icon="\uf013" weight=100 blockGap=8
-    export function ext4MotoresMover(movimiento: Ext4MovimientoMotores, velocidad?: number): void {
-        const v = clampSpeed(velocidad === undefined ? 50 : velocidad);
-        const { rojo, verde } = movimientoToSpeeds(movimiento, v);
-        runDualMotors(rojo, verde);
+    // Tiempo en ms para completar un giro de 90° — ajustar con hardware real
+    const TIEMPO_GIRO_90 = 500
+
+    // Milisegundos para recorrer 1 cm a velocidad 100 — ajustar con hardware real
+    const MS_POR_CM_A_VEL_100 = 20
+
+    // ── Enums ────────────────────────────────────────────────────────
+
+    export enum Ext4MovimientoMotores {
+        //% block="Avanzar"
+        Avanzar = 1,
+        //% block="Retroceder"
+        Retroceder = 2,
+        //% block="Girar a la derecha"
+        GirarDerecha = 3,
+        //% block="Girar a la Izquierda"
+        GirarIzquierda = 4,
+        //% block="Frenar"
+        Frenar = 5,
     }
 
+    export enum Ext4DireccionGiro {
+        //% block="↰ Izquierda"
+        Izquierda = 0,
+        //% block="Derecha ↱"
+        Derecha = 1,
+    }
+
+    // ── Protocolo I2C interno ────────────────────────────────────────
+
+    // Envía velocidad a un motor por I2C.
+    // speedRaw: valor en rango -100 a 100 YA con la negación aplicada si corresponde.
+    function writeMotor(address: number, speedRaw: number): void {
+        const half = speedRaw / 2
+        let speed_Buff = 0
+        if (half < 0) {
+            const s = -half
+            speed_Buff = ((~s) + 1) | 0x80
+        } else {
+            speed_Buff = half
+        }
+        let buf = pins.createBuffer(4)
+        buf.setNumber(NumberFormat.UInt8BE, 0, 0x11)
+        buf.setNumber(NumberFormat.UInt8BE, 1, speed_Buff)
+        buf.setNumber(NumberFormat.UInt8BE, 2, 0)
+        buf.setNumber(NumberFormat.UInt8BE, 3, 0)
+        pins.i2cWriteBuffer(address, buf)
+    }
+
+    // Mueve ambos motores. speed1 y speed2 en rango -100 a 100.
+    // Internamente: motor rojo se niega (montaje en espejo).
+    function runDualMotors(speed1: number, speed2: number): void {
+        writeMotor(MOTOR_ROJO, -speed1)    // negado por montaje en espejo
+        writeMotor(MOTOR_VERDE, speed2)
+    }
+
+    // Convierte movimiento + velocidad a speeds para cada motor.
     function movimientoToSpeeds(
         movimiento: Ext4MovimientoMotores,
         velocidad: number
-    ): { rojo: number; verde: number } {
+    ): { s1: number; s2: number } {
         switch (movimiento) {
             case Ext4MovimientoMotores.Avanzar:
-                return { rojo: velocidad, verde: velocidad };
+                return { s1: velocidad, s2: velocidad }
             case Ext4MovimientoMotores.Retroceder:
-                return { rojo: -velocidad, verde: -velocidad };
+                return { s1: -velocidad, s2: -velocidad }
             case Ext4MovimientoMotores.GirarDerecha:
-                return { rojo: -velocidad, verde: velocidad };
+                return { s1: velocidad, s2: -velocidad }
             case Ext4MovimientoMotores.GirarIzquierda:
-                return { rojo: velocidad, verde: -velocidad };
+                return { s1: -velocidad, s2: velocidad }
             case Ext4MovimientoMotores.Frenar:
-                return { rojo: 0, verde: 0 };
+                return { s1: 0, s2: 0 }
             default:
-                const _exhaustiveCheck: never = movimiento;
-                return _exhaustiveCheck;
+                const _exhaustiveCheck: never = movimiento
+                return _exhaustiveCheck
         }
     }
 
-    function clampSpeed(velocidad: number): number {
-        if (velocidad < 0) return 0;
-        if (velocidad > 100) return 100;
-        return velocidad;
+    // ── Bloques públicos ─────────────────────────────────────────────
+
+    /**
+     * Mueve los motores en la dirección indicada a la velocidad indicada.
+     */
+    //% blockId=ext4_motor_move
+    //% block="Motores %movimiento || Velocidad %velocidad"
+    //% movimiento.fieldEditor="gridpicker"
+    //% velocidad.min=0 velocidad.max=100 velocidad.defl=50
+    //% expandableArgumentMode="toggle"
+    //% group="Motores" color="#34c2eb" weight=90 blockGap=8
+    export function ext4MotoresMover(
+        movimiento: Ext4MovimientoMotores,
+        velocidad = 50
+    ): void {
+        const { s1, s2 } = movimientoToSpeeds(movimiento, velocidad)
+        runDualMotors(s1, s2)
     }
 
     /**
-     * Control dual I2C — parámetros en % (−100…100) antes del escalado interno.
-     * rojo → MOTOR_ROJO (81), verde → MOTOR_VERDE (82)
+     * Gira el robot 90° a izquierda o derecha y frena automáticamente.
      */
-    function runDualMotors(rojo: number, verde: number): void {
-        let speedRojo = -rojo / 2;
-        let speedVerde = verde / 2;
-
-        let speedBuffRojo: number;
-        if (speedRojo < 0) {
-            speedRojo = -speedRojo;
-            speedBuffRojo = (~speedRojo) + 1;
-            speedBuffRojo = speedBuffRojo | 0x80;
-        } else {
-            speedBuffRojo = speedRojo;
-        }
-
-        let speedBuffVerde: number;
-        if (speedVerde < 0) {
-            speedVerde = -speedVerde;
-            speedBuffVerde = (~speedVerde) + 1;
-            speedBuffVerde = speedBuffVerde | 0x80;
-        } else {
-            speedBuffVerde = speedVerde;
-        }
-
-        let bufRojo = pins.createBuffer(4);
-        bufRojo.setNumber(NumberFormat.UInt8BE, 0, 0x11);
-        bufRojo.setNumber(NumberFormat.UInt8BE, 1, speedBuffRojo);
-        bufRojo.setNumber(NumberFormat.UInt8BE, 2, 0);
-        bufRojo.setNumber(NumberFormat.UInt8BE, 3, 0);
-
-        let bufVerde = pins.createBuffer(4);
-        bufVerde.setNumber(NumberFormat.UInt8BE, 0, 0x11);
-        bufVerde.setNumber(NumberFormat.UInt8BE, 1, speedBuffVerde);
-        bufVerde.setNumber(NumberFormat.UInt8BE, 2, 0);
-        bufVerde.setNumber(NumberFormat.UInt8BE, 3, 0);
-
-        pins.i2cWriteBuffer(MOTOR_ROJO, bufRojo);
-        pins.i2cWriteBuffer(MOTOR_VERDE, bufVerde);
+    //% blockId=ext4_motor_giro90
+    //% block="Girar a 90° %direccion"
+    //% direccion.fieldEditor="gridpicker"
+    //% group="Motores" color="#34c2eb" weight=85 blockGap=8
+    export function girar90(direccion: Ext4DireccionGiro): void {
+        const mov = direccion === Ext4DireccionGiro.Izquierda
+            ? Ext4MovimientoMotores.GirarIzquierda
+            : Ext4MovimientoMotores.GirarDerecha
+        const { s1, s2 } = movimientoToSpeeds(mov, 50)
+        runDualMotors(s1, s2)
+        basic.pause(TIEMPO_GIRO_90)
+        runDualMotors(0, 0)
     }
 
     /**
-     * Escanea el bus I2C y muestra en la pantalla LED las direcciones
-     * que responden. Útil para encontrar la dirección real de los motores.
-     * Muestra cada dirección encontrada como número durante 1 segundo.
+     * Mueve el robot una distancia en centímetros y frena automáticamente.
      */
-    //% blockId=ext4_i2c_scan block="Escanear bus I2C (mostrar direcciones)"
-    //% group="Motores" color="#34c2eb" icon="\uf013" weight=1 blockGap=8
+    //% blockId=ext4_motor_cm
+    //% block="Motores %movimiento por %cm cm || Velocidad %velocidad"
+    //% movimiento.fieldEditor="gridpicker"
+    //% cm.min=1 cm.max=500 cm.defl=10
+    //% velocidad.min=0 velocidad.max=100 velocidad.defl=50
+    //% expandableArgumentMode="toggle"
+    //% group="Motores" color="#34c2eb" weight=84 blockGap=8
+    export function moverCm(
+        movimiento: Ext4MovimientoMotores,
+        cm: number,
+        velocidad = 50
+    ): void {
+        if (velocidad <= 0 || cm <= 0) return
+        const { s1, s2 } = movimientoToSpeeds(movimiento, velocidad)
+        const tiempo = (cm * MS_POR_CM_A_VEL_100 * 100) / velocidad
+        runDualMotors(s1, s2)
+        basic.pause(tiempo)
+        runDualMotors(0, 0)
+    }
+
+    /**
+     * Escanea el bus I2C y envía por puerto serie las direcciones que responden.
+     * Conectar micro:bit por USB y abrir consola en MakeCode para ver el resultado.
+     */
+    //% blockId=ext4_i2c_scan
+    //% block="Escanear bus I2C (mostrar direcciones)"
+    //% group="Motores" color="#34c2eb" weight=1 blockGap=8
     export function escanearI2C(): void {
-        let encontrados = 0;
+        serial.writeLine("--- Escaneando I2C ---")
+        let encontrados = 0
         for (let addr = 1; addr < 128; addr++) {
-            // Intenta escribir 0 bytes; si no hay error, el dispositivo responde
-            let buf = pins.createBuffer(1);
-            buf[0] = 0;
-            pins.i2cWriteBuffer(addr, buf);
-            // En micro:bit PXT, i2cWriteBuffer no lanza excepción; usamos
-            // i2cReadBuffer para detectar ACK
-            let resp = pins.i2cReadBuffer(addr, 1);
+            let buf = pins.createBuffer(1)
+            buf[0] = 0
+            pins.i2cWriteBuffer(addr, buf)
+            let resp = pins.i2cReadBuffer(addr, 1)
             if (resp.length > 0) {
-                basic.showNumber(addr);
-                basic.pause(1000);
-                encontrados += 1;
+                serial.writeLine("Encontrado: " + addr)
+                encontrados += 1
             }
         }
-        if (encontrados == 0) {
-            basic.showString("?");
+        if (encontrados === 0) {
+            serial.writeLine("Ninguno encontrado")
         }
+        serial.writeLine("--- Fin ---")
     }
 }
