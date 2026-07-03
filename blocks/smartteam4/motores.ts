@@ -142,30 +142,4 @@ namespace ext4_smartteam4 {
         basic.pause(tiempo)
         runDualMotors(0, 0)
     }
-
-    /**
-     * Escanea el bus I2C y envía por puerto serie las direcciones que responden.
-     * Conectar micro:bit por USB y abrir consola en MakeCode para ver el resultado.
-     */
-    //% blockId=ext4_i2c_scan
-    //% block="Escanear bus I2C (mostrar direcciones)"
-    //% group="Motores" color="#34c2eb" weight=1 blockGap=8
-    export function escanearI2C(): void {
-        serial.writeLine("--- Escaneando I2C ---")
-        let encontrados = 0
-        for (let addr = 1; addr < 128; addr++) {
-            let buf = pins.createBuffer(1)
-            buf[0] = 0
-            pins.i2cWriteBuffer(addr, buf)
-            let resp = pins.i2cReadBuffer(addr, 1)
-            if (resp.length > 0) {
-                serial.writeLine("Encontrado: " + addr)
-                encontrados += 1
-            }
-        }
-        if (encontrados === 0) {
-            serial.writeLine("Ninguno encontrado")
-        }
-        serial.writeLine("--- Fin ---")
-    }
 }

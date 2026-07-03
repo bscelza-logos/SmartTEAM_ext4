@@ -11,7 +11,6 @@
     "Ext4MovimientoMotores.GirarDerecha|block": "Girar a la derecha",
     "Ext4MovimientoMotores.GirarIzquierda|block": "Girar a la Izquierda",
     "Ext4MovimientoMotores.Frenar|block": "Frenar",
-    "ext4_smartteam4.escanearI2C|block": "Escanear bus I2C (mostrar direcciones)",
     "ext4_smartteam4.showString|block": "Escribir %texto en la fila %fila y columna %columna",
     "ext4_smartteam4.clear|block": "Borrar textos de la OLED en el pin IIC",
     "Ext4OledFila|block": "Fila OLED",
