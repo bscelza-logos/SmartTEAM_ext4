@@ -6,8 +6,9 @@ namespace ext4_smartteam4 {
     let MOTOR_ROJO = 81    // 0x51 — verificado en código oficial ICreateRobot
     let MOTOR_VERDE = 82   // 0x52 — verificado en código oficial ICreateRobot
 
-    // Tiempo en ms para completar un giro de 90° — ajustar con hardware real
-    const TIEMPO_GIRO_90 = 500
+    // Tiempo en ms para girar exactamente 90° a velocidad 50
+    // Ajustar este valor midiendo el robot real
+    const MS_POR_GRADO = 500 / 90
 
     // Milisegundos para recorrer 1 cm a velocidad 100 — ajustar con hardware real
     const MS_POR_CM_A_VEL_100 = 20
@@ -104,19 +105,24 @@ namespace ext4_smartteam4 {
     }
 
     /**
-     * Gira el robot 90° a izquierda o derecha y frena automáticamente.
+     * Gira el robot en la dirección indicada el ángulo especificado y frena solo.
+     * La velocidad es fija (50). Calibrar con la constante MS_POR_GRADO.
      */
-    //% blockId=ext4_motor_giro90
-    //% block="Girar a 90° %direccion"
+    //% blockId=ext4_motor_girar
+    //% block="Girar a la %direccion || ángulo de %angulo °"
     //% direccion.fieldEditor="gridpicker"
+    //% angulo.min=0 angulo.max=180 angulo.defl=90
+    //% expandableArgumentMode="toggle"
     //% group="Motores" color="#34c2eb" weight=85 blockGap=8
-    export function girar90(direccion: Ext4DireccionGiro): void {
+    export function girar(direccion: Ext4DireccionGiro, angulo = 90): void {
+        if (angulo <= 0) return
         const mov = direccion === Ext4DireccionGiro.Izquierda
             ? Ext4MovimientoMotores.GirarIzquierda
             : Ext4MovimientoMotores.GirarDerecha
         const { s1, s2 } = movimientoToSpeeds(mov, 50)
+        const tiempo = MS_POR_GRADO * angulo
         runDualMotors(s1, s2)
-        basic.pause(TIEMPO_GIRO_90)
+        basic.pause(tiempo)
         runDualMotors(0, 0)
     }
 

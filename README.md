@@ -109,6 +109,38 @@ Al crear o abrir un proyecto con esta extensión, estarán disponibles en la cat
 
 ---
 
+## Calibración de motores
+
+Los bloques de **Motores** dependen de constantes que hay que **ajustar midiendo el robot real**. Están todas al inicio de `blocks/smartteam4/motores.ts`, agrupadas y comentadas para encontrarlas rápido.
+
+| Constante | Valor por defecto | Para qué sirve | La usa |
+|-----------|-------------------|----------------|--------|
+| `MOTOR_ROJO` | `81` (0x51) | Dirección I2C del motor **derecho** (rojo) | Todos los bloques de motores |
+| `MOTOR_VERDE` | `82` (0x52) | Dirección I2C del motor **izquierdo** (verde) | Todos los bloques de motores |
+| `MS_POR_GRADO` | `500 / 90` | Milisegundos para girar **1°** a velocidad 50 | `Girar a la … ángulo de …°` |
+| `MS_POR_CM_A_VEL_100` | `20` | Milisegundos para recorrer **1 cm** a velocidad 100 | `Motores … por … cm` |
+
+### Cómo configurarlas
+
+1. **Direcciones I2C (`MOTOR_ROJO`, `MOTOR_VERDE`)**
+   - Son fijas del hardware Smart Hub V2: rojo = 81, verde = 82.
+   - Solo cambialas si tu placa responde en otras direcciones. Para descubrirlas, conectá la micro:bit por USB y usá un escáner I2C, o revisá la documentación de tu placa.
+
+2. **`MS_POR_GRADO` (giro por ángulo)**
+   - El tiempo de giro se calcula como `MS_POR_GRADO * angulo`, con velocidad fija 50.
+   - Calibración: poné el bloque `Girar a la derecha ángulo de 90°`, medí cuánto gira realmente el robot y ajustá.
+   - Si gira **de menos**, subí el valor; si gira **de más**, bajalo.
+   - Ejemplo: si a `500/90` gira solo 45° reales, duplicá el numerador → `1000 / 90`.
+
+3. **`MS_POR_CM_A_VEL_100` (distancia en cm)**
+   - El tiempo se calcula como `(cm * MS_POR_CM_A_VEL_100 * 100) / velocidad`.
+   - Calibración: usá `Motores Avanzar por 100 cm`, medí la distancia real recorrida y ajustá.
+   - Si recorre **de menos**, subí el valor; si recorre **de más**, bajalo.
+
+> **Nota:** estas constantes viven en el código (`.ts`), no en `config/bloques.ts`, porque son parámetros físicos de calibración y no metadatos del bloque. Tras cambiarlas, volvé a importar/actualizar la extensión en MakeCode para que tomen efecto.
+
+---
+
 ## Reglas para crear bloques
 
 Toda extensión SmartTEAM4 sigue estas reglas. **Respétalas antes de agregar un bloque nuevo.**

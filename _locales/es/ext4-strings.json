@@ -5,6 +5,7 @@
     "ext4_smartteam4.sumarCantidad|block": "Sumar 1",
     "ext4_smartteam4.restarCantidad|block": "Restar 1",
     "ext4_smartteam4.ext4MotoresMover|block": "Motores %movimiento || Velocidad %velocidad",
+    "ext4_smartteam4.girar|block": "Girar a la %direccion || ángulo de %angulo °",
     "Ext4MovimientoMotores|block": "Movimiento",
     "Ext4MovimientoMotores.Avanzar|block": "Avanzar",
     "Ext4MovimientoMotores.Retroceder|block": "Retroceder",
