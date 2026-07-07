@@ -82,9 +82,9 @@ namespace ext4_smartteam4 {
     ): { s1: number; s2: number } {
         switch (movimiento) {
             case Ext4MovimientoMotores.Avanzar:
-                return { s1: -velocidad, s2: velocidad }
-            case Ext4MovimientoMotores.Retroceder:
                 return { s1: velocidad, s2: -velocidad }
+            case Ext4MovimientoMotores.Retroceder:
+                return { s1: -velocidad, s2: velocidad }
             case Ext4MovimientoMotores.GirarDerecha:
                 return { s1: velocidad, s2: velocidad }
             case Ext4MovimientoMotores.GirarIzquierda:
