@@ -12,8 +12,8 @@ namespace ext4_smartteam4 {
     // Circunferencia de rueda en cm (π × diámetro)
     const CIRCUNFERENCIA_RUEDA_CM = 3.14159 * DIAMETRO_RUEDA_CM  // = 17.28 cm
 
-    // Distancia entre centros de rueda en cm (medido: 90mm)
-    const DIST_ENTRE_RUEDAS_CM = 9.0
+    // Distancia entre centros de rueda en cm (medido: 105mm)
+    const DIST_ENTRE_RUEDAS_CM = 10.5
 
     // ── Constante a calibrar con el robot real ───────────────────────
     // RPM del motor a velocidad 100 (después de la caja reductora).
@@ -86,9 +86,9 @@ namespace ext4_smartteam4 {
             case Ext4MovimientoMotores.Retroceder:
                 return { s1: -velocidad, s2: velocidad }
             case Ext4MovimientoMotores.GirarDerecha:
-                return { s1: velocidad, s2: velocidad }
-            case Ext4MovimientoMotores.GirarIzquierda:
                 return { s1: -velocidad, s2: -velocidad }
+            case Ext4MovimientoMotores.GirarIzquierda:
+                return { s1: velocidad, s2: velocidad }
             case Ext4MovimientoMotores.Frenar:
                 return { s1: 0, s2: 0 }
             default:
