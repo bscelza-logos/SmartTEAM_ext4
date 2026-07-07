@@ -71,7 +71,7 @@ namespace ext4_smartteam4 {
     // Mueve ambos motores. speed1 y speed2 en rango -100 a 100.
     // Internamente: motor rojo se niega (montaje en espejo).
     function runDualMotors(speed1: number, speed2: number): void {
-        writeMotor(MOTOR_ROJO, -speed1)    // negado por montaje en espejo
+        writeMotor(MOTOR_ROJO, speed1)
         writeMotor(MOTOR_VERDE, speed2)
     }
 
@@ -82,13 +82,13 @@ namespace ext4_smartteam4 {
     ): { s1: number; s2: number } {
         switch (movimiento) {
             case Ext4MovimientoMotores.Avanzar:
-                return { s1: velocidad, s2: velocidad }
-            case Ext4MovimientoMotores.Retroceder:
-                return { s1: -velocidad, s2: -velocidad }
-            case Ext4MovimientoMotores.GirarDerecha:
                 return { s1: velocidad, s2: -velocidad }
-            case Ext4MovimientoMotores.GirarIzquierda:
+            case Ext4MovimientoMotores.Retroceder:
                 return { s1: -velocidad, s2: velocidad }
+            case Ext4MovimientoMotores.GirarDerecha:
+                return { s1: velocidad, s2: velocidad }
+            case Ext4MovimientoMotores.GirarIzquierda:
+                return { s1: -velocidad, s2: -velocidad }
             case Ext4MovimientoMotores.Frenar:
                 return { s1: 0, s2: 0 }
             default:
