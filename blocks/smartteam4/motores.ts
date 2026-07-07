@@ -12,8 +12,8 @@ namespace ext4_smartteam4 {
     // Circunferencia de rueda en cm (π × diámetro)
     const CIRCUNFERENCIA_RUEDA_CM = 3.14159 * DIAMETRO_RUEDA_CM  // = 17.28 cm
 
-    // Distancia entre centros de rueda en cm (medido: 105mm)
-    const DIST_ENTRE_RUEDAS_CM = 10.5
+    // Distancia entre centros de rueda en cm (medido: 120mm)
+    const DIST_ENTRE_RUEDAS_CM = 12.0
 
     // ── Constante a calibrar con el robot real ───────────────────────
     // RPM del motor a velocidad 100 (después de la caja reductora).

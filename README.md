@@ -9,7 +9,7 @@ Extensión MakeCode para SmartTEAM4 (micro:bit).
 3. Ve a **Extensiones** (icono de engranaje)
 4. Pega la URL del repositorio de GitHub:
    `https://github.com/bscelza-logos/SmartTEAM_ext4`
-5. Confirma la importación (versión actual: **2.0.5**)
+5. Confirma la importación (versión actual: **2.0.6**)
 
 ### Actualizar la extensión en un proyecto existente
 
@@ -17,7 +17,7 @@ MakeCode puede cachear extensiones importadas desde GitHub. Si no ves los bloque
 
 1. Eliminá la extensión **ext4** en **Extensiones**.
 2. Volvé a importar la URL de GitHub.
-3. Confirmá que la versión sea **2.0.5**.
+3. Confirmá que la versión sea **2.0.6**.
 
 ## Simulador y conexión USB
 
