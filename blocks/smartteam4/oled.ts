@@ -260,27 +260,29 @@ namespace ext4_smartteam4 {
     }
 
     /**
-     * Escribe texto en la OLED I2C (inicializa la pantalla si hace falta).
-     * @param texto texto a mostrar, eg: abc
+     * Escribe texto o un número en la OLED I2C (inicializa la pantalla si hace falta).
+     * @param texto texto o número a mostrar, eg: abc
      * @param fila fila de la OLED (0–4), eg: F0
      * @param columna columna de la OLED (0–11), eg: C0
      */
     //% blockId=ext4_oled_show_text block="Escribir %texto en la fila %fila y columna %columna"
     //% parts=OLED12864_I2C trackArgs=0
+    //% texto.shadow=text
     //% texto.defl="abc"
     //% fila.defl=Ext4OledFila.F0
     //% columna.defl=Ext4OledColumna.C0
     //% group="OLED" color="#34c2eb" icon="\uf108"
     //% weight=10 blockGap=10
-    export function showString(texto: string, fila: Ext4OledFila, columna: Ext4OledColumna, color: number = 1) {
+    export function showString(texto: any, fila: Ext4OledFila, columna: Ext4OledColumna, color: number = 1) {
         ensureOledInit()
+        let s = "" + texto
         let oled_x = columna;
         let oled_y = fila;
         let col2 = 0
         let q = 0
         let ind2 = 0
-        for (let r = 0; r < texto.length; r++) {
-            q = font[texto.charCodeAt(r)]
+        for (let r = 0; r < s.length; r++) {
+            q = font[s.charCodeAt(r)]
             for (let o = 0; o < 5; o++) {
                 col2 = 0
                 for (let p = 0; p < 5; p++) {
