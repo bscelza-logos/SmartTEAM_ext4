@@ -6,12 +6,24 @@ namespace ext4_smartteam4 {
     let MOTOR_ROJO = 81    // 0x51 — verificado en código oficial ICreateRobot
     let MOTOR_VERDE = 82   // 0x52 — verificado en código oficial ICreateRobot
 
-    // Tiempo en ms para girar exactamente 90° a velocidad 50
-    // Ajustar este valor midiendo el robot real
-    const MS_POR_GRADO = 500 / 90
+    // ── Constantes físicas del robot ────────────────────────────────
+    // Diámetro de rueda en cm (medido: 55mm)
+    const DIAMETRO_RUEDA_CM = 5.5
+    // Circunferencia de rueda en cm (π × diámetro)
+    const CIRCUNFERENCIA_RUEDA_CM = 3.14159 * DIAMETRO_RUEDA_CM  // = 17.28 cm
 
-    // Milisegundos para recorrer 1 cm a velocidad 100 — ajustar con hardware real
-    const MS_POR_CM_A_VEL_100 = 20
+    // Distancia entre centros de rueda en cm (medido: 120mm)
+    const DIST_ENTRE_RUEDAS_CM = 12.0
+
+    // ── Constante a calibrar con el robot real ───────────────────────
+    // RPM del motor a velocidad 100 (después de la caja reductora).
+    // Procedimiento de calibración:
+    //   1. Marcar una rueda con una cinta
+    //   2. Usar el bloque "Motores Avanzar por X cm" con X=100 y velocidad=100
+    //   3. Contar cuántas vueltas dio la rueda
+    //   4. RPM = vueltas × 60000 / tiempo_real_ms
+    // Valor inicial estimado: 150 RPM (ajustar tras medir)
+    const RPM_A_VEL_100 = 150
 
     // ── Enums ────────────────────────────────────────────────────────
 
@@ -106,21 +118,24 @@ namespace ext4_smartteam4 {
 
     /**
      * Gira el robot en la dirección indicada el ángulo especificado y frena solo.
-     * La velocidad es fija (50). Calibrar con la constante MS_POR_GRADO.
+     * Velocidad fija = 50. Calibrar con RPM_A_VEL_100.
      */
     //% blockId=ext4_motor_girar
     //% block="Girar a la %direccion || ángulo de %angulo °"
     //% direccion.fieldEditor="gridpicker"
-    //% angulo.min=0 angulo.max=180 angulo.defl=90
+    //% angulo.min=1 angulo.max=180 angulo.defl=90
     //% expandableArgumentMode="toggle"
     //% group="Motores" color="#34c2eb" weight=85 blockGap=8
     export function girar(direccion: Ext4DireccionGiro, angulo = 90): void {
         if (angulo <= 0) return
+        const velocidad_giro = 50
+        const rpm_efectivas = RPM_A_VEL_100 * velocidad_giro / 100
+        const arco_cm = 3.14159 * DIST_ENTRE_RUEDAS_CM * angulo / 360
+        const tiempo = (arco_cm * 60000) / (CIRCUNFERENCIA_RUEDA_CM * rpm_efectivas)
         const mov = direccion === Ext4DireccionGiro.Izquierda
             ? Ext4MovimientoMotores.GirarIzquierda
             : Ext4MovimientoMotores.GirarDerecha
-        const { s1, s2 } = movimientoToSpeeds(mov, 50)
-        const tiempo = MS_POR_GRADO * angulo
+        const { s1, s2 } = movimientoToSpeeds(mov, velocidad_giro)
         runDualMotors(s1, s2)
         basic.pause(tiempo)
         runDualMotors(0, 0)
@@ -133,7 +148,7 @@ namespace ext4_smartteam4 {
     //% block="Motores %movimiento por %cm cm || Velocidad %velocidad"
     //% movimiento.fieldEditor="gridpicker"
     //% cm.min=1 cm.max=500 cm.defl=10
-    //% velocidad.min=0 velocidad.max=100 velocidad.defl=50
+    //% velocidad.min=1 velocidad.max=100 velocidad.defl=50
     //% expandableArgumentMode="toggle"
     //% group="Motores" color="#34c2eb" weight=84 blockGap=8
     export function moverCm(
@@ -142,8 +157,9 @@ namespace ext4_smartteam4 {
         velocidad = 50
     ): void {
         if (velocidad <= 0 || cm <= 0) return
+        const rpm_efectivas = RPM_A_VEL_100 * velocidad / 100
+        const tiempo = (cm * 60000) / (CIRCUNFERENCIA_RUEDA_CM * rpm_efectivas)
         const { s1, s2 } = movimientoToSpeeds(movimiento, velocidad)
-        const tiempo = (cm * MS_POR_CM_A_VEL_100 * 100) / velocidad
         runDualMotors(s1, s2)
         basic.pause(tiempo)
         runDualMotors(0, 0)
