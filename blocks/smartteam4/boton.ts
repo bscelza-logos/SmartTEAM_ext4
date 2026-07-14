@@ -25,19 +25,21 @@ namespace ext4_smartteam4 {
      */
     //% blockId=ext4_button_sensor block="BOTÓN en el puerto %puerto" blockHidden=1 color=#fcbb2b
     export function ext4BotonEnPin(puerto: Ext4Puerto): number {
-        return pins.digitalReadPin(puertoToGpioPin(puerto));
+        const pin = puertoToGpioPin(puerto)
+        pins.setPull(pin, PinPullMode.PullUp)
+        return 1 - pins.digitalReadPin(pin)
     }
 
     /**
      * Compara la lectura del botón con un valor numérico.
      * @param reading lectura del botón, eg: ext4BotonEnPin(Ext4Puerto.P1)
      * @param op operador de comparación
-     * @param value valor a comparar, eg: 0
+     * @param value valor a comparar, eg: 1
      */
     //% blockId=ext4_button_compare block="$reading $op $value" color=#00A4A6 colorSecondary=#fcbb2b group="Sensores" weight=0 blockGap=8
     //% reading.shadow=ext4_button_sensor
     //% value.shadow=math_number
-    //% value.defl=0
+    //% value.defl=1
     export function ext4BotonComparar(reading: number, op: Ext4CompareOperator, value: number): boolean {
         return compareValues(reading, op, value);
     }

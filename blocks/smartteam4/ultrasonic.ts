@@ -22,14 +22,14 @@ namespace ext4_smartteam4 {
     }
 
     /**
-     * Comprueba si la distancia medida indica un objeto en el rango 5–50 cm.
+     * Comprueba si la distancia medida indica un objeto en el rango 3–25 cm.
      * @param distancia distancia en cm, eg: ext4UltrasonicCm(Ext4Puerto.P1)
      * @param estado Verdadero = detectado en rango; Falso = fuera de rango
      */
     //% blockId=ext4_ultrasonic_detect block="$distancia detecta objeto %estado" color=#00A4A6 colorSecondary=#fcbb2b group="Sensores" weight=0 blockGap=8
     //% distancia.shadow=ext4_ultrasonic_sensor
     export function ext4UltrasonicDetecta(distancia: number, estado: Ext4ObjetoDetectado): boolean {
-        const detectado = distancia > 5 && distancia < 50;
+        const detectado = distancia > 3 && distancia < 25;
         switch (estado) {
             case Ext4ObjetoDetectado.Verdadero:
                 return detectado;

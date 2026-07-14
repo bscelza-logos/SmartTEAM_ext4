@@ -160,6 +160,34 @@ namespace ext4_smartteam4 {
         0x00,0x06,0x01,0x01,0x02,0x02,0x04,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // '~'
     ]
 
+    // ── Fuente extra: vocales con acento y ñ/Ñ (8×16px) ─────────────
+    // Orden: á, é, í, ó, ú, ñ, Ñ
+    // Cada entrada = 16 bytes (igual que FONT8x16)
+    const FONT_EXTRA_CODES: number[] = [225, 233, 237, 243, 250, 241, 209]
+    const FONT_EXTRA: number[] = [
+        // á (225) — base: a con acento agudo arriba
+        0x00,0x00,0x80,0x80,0x80,0x80,0x00,0x00,
+        0x00,0x19,0x24,0x22,0x22,0x22,0x3F,0x20,
+        // é (233) — base: e con acento agudo arriba
+        0x00,0x00,0x80,0x80,0x80,0x80,0x00,0x00,
+        0x00,0x1F,0x22,0x22,0x22,0x22,0x13,0x00,
+        // í (237) — base: i con acento agudo arriba
+        0x00,0x80,0x98,0x98,0x00,0x00,0x00,0x00,
+        0x00,0x20,0x20,0x3F,0x20,0x20,0x00,0x00,
+        // ó (243) — base: o con acento agudo arriba
+        0x00,0x00,0x80,0x80,0x80,0x80,0x00,0x00,
+        0x00,0x1F,0x20,0x20,0x20,0x20,0x1F,0x00,
+        // ú (250) — base: u con acento agudo arriba
+        0x80,0x80,0x00,0x00,0x00,0x80,0x80,0x00,
+        0x00,0x1F,0x20,0x20,0x20,0x10,0x3F,0x20,
+        // ñ (241) — base: n con tilde arriba
+        0x80,0x80,0x00,0x80,0x80,0x80,0x00,0x00,
+        0x20,0x3F,0x21,0x00,0x00,0x20,0x3F,0x20,
+        // Ñ (209) — base: N con tilde arriba
+        0x08,0xF8,0x30,0xC0,0x00,0x08,0xF8,0x08,
+        0x20,0x3F,0x20,0x00,0x07,0x18,0x3F,0x00,
+    ]
+
     // ── I2C helpers ──────────────────────────────────────────────────
 
     function oledCmd(cmd: number): void {
@@ -216,31 +244,61 @@ namespace ext4_smartteam4 {
         }
     }
 
+    // Limpia las 2 páginas que ocupa una fila de texto.
+    function clearFila(fila: number): void {
+        const pageTop = fila * 2
+        let blank = pins.createBuffer(128)
+        blank.fill(0)
+        for (let p = 0; p < 2; p++) {
+            oledCmd(0xB0 | (pageTop + p))
+            oledCmd(0x00)
+            oledCmd(0x10)
+            oledData(blank)
+        }
+    }
+
     // ── Escritura de caracteres ──────────────────────────────────────
 
-    // Escribe un carácter en página/columna de píxeles.
-    // fila: 0–3 (cada fila ocupa 2 páginas)
-    // col: 0–15 (cada col ocupa 8px)
+    // Obtiene los 16 bytes de bitmap para un código de carácter.
+    // Primero busca en FONT_EXTRA, luego en FONT8x16.
+    // Si no se encuentra, usa espacio (código 32).
+    function getCharBitmap(code: number): number[] {
+        // Buscar en tabla extra (á é í ó ú ñ Ñ)
+        for (let i = 0; i < FONT_EXTRA_CODES.length; i++) {
+            if (FONT_EXTRA_CODES[i] === code) {
+                const base = i * 16
+                let bmp: number[] = []
+                for (let j = 0; j < 16; j++) bmp.push(FONT_EXTRA[base + j])
+                return bmp
+            }
+        }
+        // Buscar en fuente ASCII estándar (32–126)
+        const idx = (code >= 32 && code <= 126) ? code - 32 : 0
+        const base = idx * 16
+        let bmp: number[] = []
+        for (let j = 0; j < 16; j++) bmp.push(FONT8x16[base + j])
+        return bmp
+    }
+
     function writeChar(ch: number, fila: number, col: number): void {
-        if (ch < 32 || ch > 126) ch = 32
-        const idx = (ch - 32) * 16
+        const bmp = getCharBitmap(ch)
         const pageTop = fila * 2
         const pixCol = col * CHAR_W
 
-        // Página superior (bytes 0–7 del carácter)
+        // Página superior (bytes 0–7)
         oledCmd(0xB0 | pageTop)
         oledCmd(0x00 | (pixCol & 0x0F))
         oledCmd(0x10 | (pixCol >> 4))
         let top = pins.createBuffer(8)
-        for (let i = 0; i < 8; i++) top[i] = FONT8x16[idx + i]
+        for (let i = 0; i < 8; i++) top[i] = bmp[i]
         oledData(top)
 
-        // Página inferior (bytes 8–15 del carácter)
+        // Página inferior (bytes 8–15)
         oledCmd(0xB0 | (pageTop + 1))
         oledCmd(0x00 | (pixCol & 0x0F))
         oledCmd(0x10 | (pixCol >> 4))
         let bot = pins.createBuffer(8)
-        for (let i = 0; i < 8; i++) bot[i] = FONT8x16[idx + 8 + i]
+        for (let i = 0; i < 8; i++) bot[i] = bmp[8 + i]
         oledData(bot)
     }
 
@@ -261,6 +319,7 @@ namespace ext4_smartteam4 {
     //% weight=10 blockGap=10
     export function showString(texto: any, fila: Ext4OledFila, columna: Ext4OledColumna): void {
         ensureOledInit()
+        clearFila(fila)
         const s = "" + texto
         for (let i = 0; i < s.length; i++) {
             const c = columna + i

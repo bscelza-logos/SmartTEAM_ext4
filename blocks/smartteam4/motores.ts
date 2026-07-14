@@ -103,7 +103,7 @@ namespace ext4_smartteam4 {
      * Mueve los motores en la dirección indicada a la velocidad indicada.
      */
     //% blockId=ext4_motor_move
-    //% block="Motores %movimiento || Velocidad %velocidad"
+    //% block="Motores %movimiento ||  Velocidad %velocidad"
     //% movimiento.fieldEditor="gridpicker"
     //% velocidad.min=0 velocidad.max=100 velocidad.defl=50
     //% expandableArgumentMode="toggle"
@@ -117,25 +117,25 @@ namespace ext4_smartteam4 {
     }
 
     /**
-     * Gira el robot en la dirección indicada el ángulo especificado y frena solo.
-     * Velocidad fija = 50. Calibrar con RPM_A_VEL_100.
+     * Gira el robot en la dirección indicada a la velocidad y ángulo especificados.
+     * Calibrar con RPM_A_VEL_100.
      */
     //% blockId=ext4_motor_girar
-    //% block="Girar a la %direccion || ángulo de %angulo °"
+    //% block="Girar a la %direccion ||  Velocidad %velocidad ángulo de %angulo °"
     //% direccion.fieldEditor="gridpicker"
-    //% angulo.min=1 angulo.max=180 angulo.defl=90
+    //% velocidad.min=1 velocidad.max=100 velocidad.defl=50
+    //% angulo.min=1 angulo.max=360 angulo.defl=90
     //% expandableArgumentMode="toggle"
     //% group="Motores" color="#34c2eb" weight=85 blockGap=8
-    export function girar(direccion: Ext4DireccionGiro, angulo = 90): void {
-        if (angulo <= 0) return
-        const velocidad_giro = 50
-        const rpm_efectivas = RPM_A_VEL_100 * velocidad_giro / 100
+    export function girar(direccion: Ext4DireccionGiro, velocidad = 50, angulo = 90): void {
+        if (angulo <= 0 || velocidad <= 0) return
+        const rpm_efectivas = RPM_A_VEL_100 * velocidad / 100
         const arco_cm = 3.14159 * DIST_ENTRE_RUEDAS_CM * angulo / 360
         const tiempo = (arco_cm * 60000) / (CIRCUNFERENCIA_RUEDA_CM * rpm_efectivas)
         const mov = direccion === Ext4DireccionGiro.Izquierda
             ? Ext4MovimientoMotores.GirarIzquierda
             : Ext4MovimientoMotores.GirarDerecha
-        const { s1, s2 } = movimientoToSpeeds(mov, velocidad_giro)
+        const { s1, s2 } = movimientoToSpeeds(mov, velocidad)
         runDualMotors(s1, s2)
         basic.pause(tiempo)
         runDualMotors(0, 0)
@@ -145,7 +145,7 @@ namespace ext4_smartteam4 {
      * Mueve el robot una distancia en centímetros y frena automáticamente.
      */
     //% blockId=ext4_motor_cm
-    //% block="Motores %movimiento por %cm cm || Velocidad %velocidad"
+    //% block="Motores %movimiento por %cm cm ||  Velocidad %velocidad"
     //% movimiento.fieldEditor="gridpicker"
     //% cm.min=1 cm.max=500 cm.defl=10
     //% velocidad.min=1 velocidad.max=100 velocidad.defl=50
