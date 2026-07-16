@@ -29,7 +29,7 @@
     "Ext4CompareOperator.Lte|block": "≤",
     "Ext4CompareOperator.Gt|block": ">",
     "Ext4CompareOperator.Gte|block": "≥",
-    "ext4_smartteam4.ext4UltrasonicCm|block": "Ultrasonido en el pin %puerto",
+    "ext4_smartteam4.ext4UltrasonicCm|block": "Ultrasonido en el puerto IIC",
     "ext4_smartteam4.ext4UltrasonicDetecta|block": "$distancia detecta objeto %estado",
     "Ext4ObjetoDetectado|block": "Objeto detectado",
     "Ext4ObjetoDetectado.Verdadero|block": "Verdadero",
