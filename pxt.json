@@ -1,6 +1,6 @@
 {
     "name": "ext4",
-    "version": "2.0.10",
+    "version": "2.0.11",
     "description": "SmartTEAM4",
     "license": "MIT",
     "dependencies": {
